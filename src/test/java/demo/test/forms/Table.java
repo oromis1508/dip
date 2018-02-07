@@ -28,7 +28,7 @@ public class Table extends BaseElement{
     }
 
     public WebElement getRow(int row) {
-        return getElement().findElements(By.tagName("td")).get(row);
+        return getElement().findElements(By.tagName("tr")).get(row);
     }
 
     public int getColumnCount() {
@@ -36,11 +36,11 @@ public class Table extends BaseElement{
     }
 
     public void clickCell(int row, int column) {
-        getRow(row).findElements(By.tagName("tr")).get(column).click();
+        getRow(row).findElements(By.tagName("td")).get(column).click();
     }
 
     public String getCellClass(int row, int column) {
-        return getRow(row).findElements(By.tagName("tr")).get(column).getAttribute("class");
+        return getRow(row).findElements(By.tagName("td")).get(column).getAttribute("class");
     }
 
 }

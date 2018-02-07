@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class BattleShipMainForm extends BaseForm {
 
-	private static final String MAIN_LOCATOR = "//div[contains(@class, 'battlefield-start-button')]";
+	private static final String MAIN_LOCATOR = String.format("//h1[contains(text(), '%s')]", getLoc("loc.battleship.logoName"));
 
 	private static final String LOCATOR_RANDOM_OPPONENT = String.format("//a[contains(text(), '%s')]", getLoc("loc.battleship.linkRandomOpponent"));
 	private final Link linkRandomOpponent = new Link(By.xpath(LOCATOR_RANDOM_OPPONENT), "Random Opponent");
@@ -39,6 +39,6 @@ public class BattleShipMainForm extends BaseForm {
 	}
 
 	public void playGame() {
-		btnPlay.clickAndWait();
+		btnPlay.click();
 	}
 }

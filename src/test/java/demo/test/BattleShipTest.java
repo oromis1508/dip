@@ -24,5 +24,9 @@ public class BattleShipTest extends BaseTest {
 
 		logger.step(3);
 		battleShipMainForm.playGame();
+
+		logger.step(4);
+		BattleShipGame game = new BattleShipGame();
+		game.PlayGame();
 	}
 }
