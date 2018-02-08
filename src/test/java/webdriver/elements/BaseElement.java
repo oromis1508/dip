@@ -1,9 +1,12 @@
 package webdriver.elements;
 
 import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import webdriver.BaseEntity;
 import webdriver.Browser;
@@ -165,8 +168,7 @@ public abstract class BaseElement extends BaseEntity {
 	public void waitForIsElementPresent() {
 		
 		isPresent(Integer.valueOf(browser.getTimeoutForCondition()));
-		// troubleshooting if element is not found
-		if (!element.isDisplayed()) {//Browser.getTroubleShooting
+		if (!element.isDisplayed()) {
 			performTroubleShooting();
 		}
 		Assert.assertTrue(formatLogMsg(getLoc("loc.is.absent")), element.isDisplayed());
@@ -216,7 +218,6 @@ public abstract class BaseElement extends BaseEntity {
 		return locator;
 	}
 
-	
 	/**
 	 * Click on the item.
 	 */
@@ -225,10 +226,11 @@ public abstract class BaseElement extends BaseEntity {
 		info(getLoc("loc.clicking"));
 		browser.getDriver().getMouse().mouseMove(element.getCoordinates());
 		if (browser.getDriver() instanceof JavascriptExecutor) {
-	        ((JavascriptExecutor)browser.getDriver()).executeScript("arguments[0].style.border='3px solid red'", element);
+	        browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", element);
 	    }
-		element.click();
-	};
+	    WebDriverWait wait = new WebDriverWait(browser.getDriver(), 10);
+		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+	}
 
 	
 	
@@ -242,10 +244,6 @@ public abstract class BaseElement extends BaseEntity {
 		return element.getText();
 	}
 
-		
-	
-	protected String id;
-	
 	/**
 	 * Check for is element present on the page.
 	 * @return Is element present
@@ -259,27 +257,27 @@ public abstract class BaseElement extends BaseEntity {
 	 * Check for is element present on the page.
 	 * @return Is element present
 	 */
+
 	public boolean isPresent(int timeout) {
-		
+
 		WebDriverWait wait = new WebDriverWait(Browser.getInstance().getDriver(), timeout);
-		browser.getDriver().manage().timeouts().implicitlyWait(TIMEOUT_WAIT_0, TimeUnit.SECONDS);
+		browser.getDriver().manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
 		try {
-			wait.until((ExpectedCondition<Boolean>) new ExpectedCondition<Boolean>() {
-				public Boolean apply(final WebDriver driver) {
-					try {
-						List<WebElement> list = driver.findElements(locator);
-						for (WebElement el : list) {
-							if (el instanceof RemoteWebElement && el.isDisplayed()) {
-								element = (RemoteWebElement) el;
-								return element.isDisplayed();
-							}
+			wait.until(webDriver -> {
+				try {
+					List<WebElement> list = webDriver.findElements(locator);
+					for (WebElement el : list) {
+						if (el instanceof RemoteWebElement && el.isDisplayed()) {
+							element = (RemoteWebElement) el;
+							return element.isDisplayed();
 						}
-						element = (RemoteWebElement) driver.findElement(locator);
-					} catch (Exception e) {
-						return false;
 					}
-					return element.isDisplayed();
+					element = (RemoteWebElement) webDriver.findElement(locator);
+				} catch (Exception e) {
+					return false;
 				}
+				return element.isDisplayed();
+
 			});
 		} catch (Exception e) {
 			return false;
@@ -297,8 +295,8 @@ public abstract class BaseElement extends BaseEntity {
 		click();
 		Browser.getInstance().waitForPageToLoad();
 	}
-	
-	
-	
+
+
+
 	}
 

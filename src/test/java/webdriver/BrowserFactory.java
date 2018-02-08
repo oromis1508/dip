@@ -28,18 +28,21 @@ public abstract class BrowserFactory {
 	 * @return RemoteWebDriver
 	 */
 	public static RemoteWebDriver setUp(final Browsers type) {
-		
-		DesiredCapabilities capabilitiesProxy = null;
-		
-		
-		
+
+		String chromeDriverName = "chromedriver";
+		String firefoxDriverName = "geckodriver";
+
 		RemoteWebDriver driver = null;
 		File myFile = null;
 		switch (type) {
 		case CHROME:
 			DesiredCapabilities cp1 = DesiredCapabilities.chrome();
 			cp1.setCapability("chrome.switches", Arrays.asList("--disable-popup-blocking"));
-			URL myTestURL = ClassLoader.getSystemResource("chromedriver");
+
+			if(System.getProperty("os.name").toLowerCase().contains("win")) {
+				chromeDriverName += ".exe";
+			}
+			URL myTestURL = ClassLoader.getSystemResource(chromeDriverName);
 			try {
 				myFile = new File(myTestURL.toURI());
 			} catch (URISyntaxException e1) {
@@ -47,12 +50,20 @@ public abstract class BrowserFactory {
 			}
 			System.setProperty("webdriver.chrome.driver", myFile.getAbsolutePath());
 			driver = new ChromeDriver(cp1);
+			driver.manage().window().maximize();
 			break;
 			
 		case FIREFOX:
-			driver = new FirefoxDriver(capabilitiesProxy);
+			URL myURLFirefox = ClassLoader.getSystemResource(firefoxDriverName);
+			try {
+				myFile = new File(myURLFirefox.toURI());
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			System.setProperty("webdriver.gecko.driver", myFile.getAbsolutePath());
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
 			break;
-			
 		case IEXPLORE:
 			//local security request flag INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS
 			//(but this flag may cause appearing "skipped" tests)
