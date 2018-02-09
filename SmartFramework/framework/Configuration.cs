@@ -7,9 +7,9 @@ namespace demo.framework {
         private const string Timeout = "Timeout";
         private const string BaseUrl = "BaseUrl";
         private const string Browser = "Browser";
-       
-        
-        private static string GetParameterValue(string key) {
+
+
+        public static string GetParameterValue(string key) {
             return ConfigurationManager.AppSettings.Get(key);
         }
 

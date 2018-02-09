@@ -1,0 +1,10 @@
+﻿<xml>
+  <!-- possible values: chrome ; iexplore;-->
+  <browser>chrome</browser>
+  
+  <!-- user account settings -->
+  <username>autoperftester@gmail.com</username>
+  <password>PuV6j_.2&amp;$m9h?UY</password>
+  <token>904da13c62ef685c2d17cdd3f3fb8430dcb1e6f23311809ba5b79e18fa4e97334dc30da82610f31b575ba</token>
+
+</xml>
