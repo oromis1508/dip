@@ -1,0 +1,8 @@
+﻿<xml>
+  <!-- possible values: chrome ; iexplore;-->
+  <browser>chrome</browser>
+  
+  <!-- user account settings -->
+  <username>qa149test</username>
+  <password>qa149testpw</password>
+</xml>
