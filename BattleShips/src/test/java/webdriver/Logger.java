@@ -31,6 +31,17 @@ public final class Logger {
 	// This flag allows/restricts logging step names
 	private static boolean logSteps = true;
 	private static PropertiesResourceManager localManager = new PropertiesResourceManager(String.format("localization/loc_%1$s.properties", System.getProperty(AQA_LOCALE, DEF_LOCALE.toString()).toLowerCase()));
+	private static PropertiesResourceManager testManager = new PropertiesResourceManager("test.properties");
+
+
+	/**
+	 * Gets test property
+	 * @param key Key
+	 * @return Test property
+	 */
+	protected static String getTestProperty(final String key) {
+		return testManager.getProperty(key);
+	}
 
 	/**
 	 * Gets locale
@@ -82,6 +93,11 @@ public final class Logger {
 	 */
 	public void step(final int step) {
 		logDelimMsg(getLoc("loc.logger.step") + String.valueOf(step));
+	}
+
+	public void step(final int step, final String messageInfo) {
+		logDelimMsg(getLoc("loc.logger.step") + String.valueOf(step));
+		info(String.format("Step %s: %s",String.valueOf(step), messageInfo));
 	}
 
 	/**

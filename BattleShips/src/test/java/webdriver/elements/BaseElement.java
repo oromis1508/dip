@@ -296,7 +296,9 @@ public abstract class BaseElement extends BaseEntity {
 		Browser.getInstance().waitForPageToLoad();
 	}
 
-
+	public String getAttribute(String attributeName) {
+		return element.getAttribute(attributeName);
+	}
 
 	}
 

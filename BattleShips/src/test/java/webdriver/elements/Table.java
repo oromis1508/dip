@@ -1,5 +1,6 @@
 package webdriver.elements;
 
+import forms.algorithm.Cell;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -34,12 +35,12 @@ public class Table extends BaseElement{
         return getRow(0).findElements(By.tagName("td")).size();
     }
 
-    public void clickCell(int row, int column) {
-        WebElement cell = getRow(row).findElements(By.tagName("td")).get(column);
-        cell.click();
+    public void clickCell(Cell cell) {
+        WebElement cellElement = getRow(cell.getRow()).findElements(By.tagName("td")).get(cell.getColumn());
+        cellElement.click();
     }
 
-    public String getCellClassName(int row, int column) {
-        return getRow(row).findElements(By.tagName("td")).get(column).getAttribute("class");
+    public String getCellClassName(Cell cell) {
+        return getRow(cell.getRow()).findElements(By.tagName("td")).get(cell.getColumn()).getAttribute("class");
     }
 }

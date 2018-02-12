@@ -1,18 +1,14 @@
 package webdriver;
 
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.BufferedReader;
-
-import java.io.InputStreamReader;
-
-
 import org.testng.ITestContext;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import webdriver.Browser.Browsers;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 
 
@@ -37,6 +33,10 @@ public abstract class BaseEntity {
 	 */
 	protected static String getLoc(final String key) {
 		return Logger.getLoc(key);
+	}
+
+	protected static String getTestProperty(final String key) {
+		return Logger.getTestProperty(key);
 	}
 
 	// ==============================================================================================
