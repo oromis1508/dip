@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Game BattleShip Test" verbose="1">
+	
+	<test name="Bot Test" preserve-order="true">
+		<classes>
+ 			<class name="test.BattleShipTest" />
+        </classes>
+	</test>
+</suite>
