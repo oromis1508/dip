@@ -1,5 +1,9 @@
-﻿using demo.framework.Elements;
+﻿using System;
+using System.Text.RegularExpressions;
+using demo.framework;
+using demo.framework.Elements;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace VkAPI.Forms
 {
@@ -9,9 +13,64 @@ namespace VkAPI.Forms
         {
         }
 
-        public string GetPostAttribute(WallPostAttribute wallPostAttribute) 
-            => GetElement().FindElementByXPath(wallPostAttribute.ToString()).Text;
+        private IWebElement WaitForChildren(string xPath)
+        {
+            IWebElement webElement = null;
+            var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
+            try
+            {
+                wait.Until(waiting =>
+                {
+                    var webElements = GetElement().FindElementsByXPath(xPath);
+                    if (webElements.Count > 0)
+                    {
+                        webElement = webElements[0];
+                        return true;
+                    }
+                    return false;
+                });
+            }
+            catch (TimeoutException)
+            {
+                Log.Fatal($"Element with locator: '{xPath}' does not exists!");
+            }
+            return webElement;
+        }
 
-        public void LikePost() => GetElement().FindElementByXPath("//span[contains(@class, 'post_like_link')]").Click();
+        public string GetPostAttribute(WallPostAttribute wallPostAttribute)
+        {
+            return WaitForChildren(wallPostAttribute.ToString()).Text;
+        }
+
+
+
+        public void LikePost()
+        {
+            GetElement().FindElementByXPath("//span[contains(@class, 'post_like_link')]").Click();
+            WaitForChildren("//span[contains(@class, 'post_like_count') and text()='1']");
+        }
+
+        public bool IsDeleted()
+        {
+            IWebElement webElement = null;
+            var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
+            try
+            {
+                wait.Until(waiting => !IsPresent());
+                return true;
+            }
+            catch (TimeoutException)
+            {
+                Log.Fatal($"Post with: '{GetLocator()}' was not delete!");
+                return false;
+            }
+        }
+
+        public string GetImageURI(string imageHref)
+        {
+            var imageStyle = WaitForChildren(WallPostAttribute.PostImage(imageHref).ToString()).GetAttribute("style");
+            var s = Regex.Matches(imageStyle, ".*url\\((.*)\\).*", RegexOptions.None);
+            return Regex.Matches(imageStyle, ".*url\\(\"(.*)\"\\).*", RegexOptions.None)[0].Groups[1].Value;
+        }
     }
 }

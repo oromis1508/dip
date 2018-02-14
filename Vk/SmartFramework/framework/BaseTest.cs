@@ -9,20 +9,21 @@ using System.Xml;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using demo.framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace demo.framework
 {
-    [TestFixture]
+    [TestClass]
     public class BaseTest : BaseEntity
     {
-       [SetUp]
+       [TestInitialize]
         public void SetUp()
        {
             Browser.GetInstance();
             Browser.GetDriver().Navigate().GoToUrl(Configuration.GetBaseUrl());
         }
 
-        [TearDown]
+        [TestCleanup]
         public void TearDown()
         {
             var processes = Process.GetProcessesByName(Configuration.GetBrowser());

@@ -13,7 +13,7 @@ namespace demo.framework
             
         public static String GetValue(String tag)
         {   
-            xmlDoc.Load("../../resources/run.xml"); // Load the XML document from the specified file
+            xmlDoc.Load("../../Resources/run.xml"); // Load the XML document from the specified file
             XmlNodeList browser = xmlDoc.GetElementsByTagName(tag);
             return browser[0].InnerText;
         }

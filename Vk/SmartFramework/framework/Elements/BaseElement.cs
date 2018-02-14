@@ -70,7 +70,7 @@ namespace demo.framework.Elements
             }
         }
 
-        public static void WaitForElementPresent(By locator, String name)
+        public static void WaitForElementPresent(By locator, string name)
         {
             var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
             try

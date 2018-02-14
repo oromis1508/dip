@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart", "SmartFramework\Smart.csproj", "{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkAPI", "VkAPI\VkAPI.csproj", "{57B9F1CB-C086-486C-A315-EB48FE964FED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkApi", "VkApi\VkApi.csproj", "{83BBBA3F-5106-4331-92BB-768E475204CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57B9F1CB-C086-486C-A315-EB48FE964FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57B9F1CB-C086-486C-A315-EB48FE964FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57B9F1CB-C086-486C-A315-EB48FE964FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57B9F1CB-C086-486C-A315-EB48FE964FED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83BBBA3F-5106-4331-92BB-768E475204CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83BBBA3F-5106-4331-92BB-768E475204CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83BBBA3F-5106-4331-92BB-768E475204CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83BBBA3F-5106-4331-92BB-768E475204CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Newtonsoft.Json;
 
 namespace demo.framework.Utils.Vk
@@ -26,12 +27,8 @@ namespace demo.framework.Utils.Vk
             var request = (HttpWebRequest) WebRequest.Create(requestString);
             request.Method = requestType.ToString();
             request.ContentType = ContentType;
+            request.ContentLength = 0;
 
-            return GetResponse(request);
-        }
-
-        private static dynamic GetResponse(WebRequest request)
-        {
             var response = (HttpWebResponse)request.GetResponse();
 
             if (response.StatusCode == HttpStatusCode.OK)
@@ -39,28 +36,23 @@ namespace demo.framework.Utils.Vk
                 var streamReader = new StreamReader(response.GetResponseStream());
                 return JsonConvert.DeserializeObject(streamReader.ReadToEnd());
             }
+
             BaseEntity.Log.Fatal("Error of getting the response");
-            return null;
+            return null;       
         }
 
-        public static dynamic UploadFileOnServer(string uri, string file, string contentType)
+        public static dynamic UploadPhotoOnServer(string uri, string filePath, string fileName)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
-            httpWebRequest.ContentType = contentType;
-            httpWebRequest.Method = RequestType.POST.ToString();
-
-            var requestStream = httpWebRequest.GetRequestStream();
-            var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
-            var buffer = new byte[8192];
-            var bytesRead = 0;
-            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+            var form = new MultipartFormDataContent
             {
-                requestStream.Write(buffer, 0, bytesRead);
-            }
-            fileStream.Close();
-            requestStream.Close();
+                {new ByteArrayContent(File.ReadAllBytes(Path.Combine(filePath, fileName))), "photo", fileName}
+            };
 
-            return GetResponse(httpWebRequest);
+            var httpClient = new HttpClient();
+            var response = httpClient.PostAsync(uri, form).Result;
+
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject(responseString);
         }
     }
 }

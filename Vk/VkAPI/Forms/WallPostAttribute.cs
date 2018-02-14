@@ -14,6 +14,8 @@
 
         public static WallPostAttribute PostCommentText(string commentId) => new WallPostAttribute($"//div[@id='{commentId}']//div[@class='wall_reply_text']");
 
+        public static WallPostAttribute PostImage(string hrefImage) => new WallPostAttribute($"//a[@href='{hrefImage}']");
+
         public override string ToString() => Value;
     }
 }
