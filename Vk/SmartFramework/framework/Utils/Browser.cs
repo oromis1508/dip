@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using demo.framework.BaseEntities;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 
-namespace demo.framework
+namespace demo.framework.Utils
 {
 
     public class Browser : BaseEntity
@@ -35,12 +30,12 @@ namespace demo.framework
             var wait = new WebDriverWait(GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
             try
             {
-                wait.Until<Boolean>(waiting =>
+                wait.Until(waiting =>
                 {
                     try
                     {
-                        var result = ((IJavaScriptExecutor)Browser.GetDriver()).ExecuteScript("return document['readyState'] ? 'complete' == document.readyState : true");
-                        return result != null && result is Boolean && (Boolean)result;
+                        var result = ((IJavaScriptExecutor)GetDriver()).ExecuteScript("return document['readyState'] ? 'complete' == document.readyState : true");
+                        return result is bool b && b;
                     }
                     catch (Exception)
                     {
@@ -48,7 +43,7 @@ namespace demo.framework
                     }
                 });
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }

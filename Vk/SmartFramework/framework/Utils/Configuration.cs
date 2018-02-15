@@ -1,6 +1,6 @@
 using System.Configuration;
 
-namespace demo.framework {
+namespace demo.framework.Utils {
     
     public class Configuration {
         //Settings

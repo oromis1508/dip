@@ -1,5 +1,5 @@
-﻿using demo.framework.Elements;
-using demo.framework.forms;
+﻿using demo.framework.BaseEntities;
+using demo.framework.Elements;
 using OpenQA.Selenium;
 
 namespace VkAPI.Forms

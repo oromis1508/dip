@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Net;
-using demo.framework;
+using demo.framework.BaseEntities;
 using demo.framework.Elements;
-using demo.framework.forms;
+using demo.framework.Utils;
 using OpenQA.Selenium;
 using VkApi;
 
@@ -35,7 +35,7 @@ namespace VkAPI.Forms
 
         public bool IsImageValid(string postId, string imageHref, string sourceImage)
         {
-            var imageUri = new VkWallPost(postId, UserId).GetImageURI(imageHref);
+            var imageUri = new VkWallPost(postId, UserId).GetImageUri(imageHref);
             var sourceImageBitmap = Resource.wall;
 
             var request = WebRequest.Create(imageUri);
@@ -43,6 +43,6 @@ namespace VkAPI.Forms
             return sourceImageBitmap.Equals(imageOnWallBitmap);
         }
 
-        public bool IsPostExist(string postId) => new VkWallPost(postId, UserId).IsDeleted();
+        public bool IsPostExist(string postId) => !new VkWallPost(postId, UserId).IsDeleted();
     }
 }

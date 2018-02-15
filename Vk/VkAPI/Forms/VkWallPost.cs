@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using demo.framework;
 using demo.framework.Elements;
+using demo.framework.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -66,7 +66,7 @@ namespace VkAPI.Forms
             }
         }
 
-        public string GetImageURI(string imageHref)
+        public string GetImageUri(string imageHref)
         {
             var imageStyle = WaitForChildren(WallPostAttribute.PostImage(imageHref).ToString()).GetAttribute("style");
             var s = Regex.Matches(imageStyle, ".*url\\((.*)\\).*", RegexOptions.None);

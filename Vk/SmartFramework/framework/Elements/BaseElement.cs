@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using demo.framework.BaseEntities;
+using demo.framework.Utils;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
@@ -12,14 +9,13 @@ namespace demo.framework.Elements
 {
     public abstract class BaseElement : BaseEntity
     {
-        private readonly RemoteWebElement _element;
-        private readonly String _name;
+        private readonly string _name;
         private readonly By _locator;
 
-        protected BaseElement(By locator, String name)
+        protected BaseElement(By locator, string name)
         {
-            this._name = name;
-            this._locator = locator;
+            _name = name;
+            _locator = locator;
         }
 
         protected RemoteWebElement GetElement()
@@ -28,7 +24,7 @@ namespace demo.framework.Elements
             return (RemoteWebElement)Browser.GetDriver().FindElement(_locator); ;
         }
 
-        protected String GetName()
+        protected string GetName()
         {
             return _name;
         }
@@ -42,15 +38,22 @@ namespace demo.framework.Elements
         {
             WaitForElementPresent();
             GetElement().Click();
-            //Browser.WaitForPageToLoad();
-            Log.Info(String.Format("{0} :: click", GetName()));
+            Log.Info($"{GetName()} :: click");
         }
 
-        public Boolean IsPresent()
+        public bool IsPresent()
         {
-            bool isPresent = Browser.GetDriver().FindElements(_locator).Count > 0;
-            Log.Info(GetName() + " : is present : " + isPresent);
-            return isPresent;
+            try
+            {
+                var isPresent = Browser.GetDriver().FindElement(_locator).Displayed;
+                Log.Info($"{GetName()} : is present : {isPresent}");
+                return isPresent;
+            }
+            catch (Exception)
+            {
+                Log.Info($"{GetName()} : is not present");
+                return false;
+            }
         }
 
         protected void WaitForElementPresent()
@@ -66,7 +69,7 @@ namespace demo.framework.Elements
             }
             catch (TimeoutException)
             {
-                Log.Fatal(string.Format("Element with locator: '{0}' does not exists!", _locator));
+                Log.Fatal($"Element with locator: '{_locator}' does not exists!");
             }
         }
 
@@ -82,7 +85,7 @@ namespace demo.framework.Elements
                         var webElements = Browser.GetDriver().FindElements(locator);
                         return webElements.Count != 0;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         return false;
                     }
@@ -90,7 +93,7 @@ namespace demo.framework.Elements
             }
             catch (TimeoutException)
             {
-                Log.Fatal(string.Format("Element with locator: '{0}' does not exists!", locator));
+                Log.Fatal($"Element with locator: '{locator}' does not exists!");
             }
         }
 

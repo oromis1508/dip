@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using demo.framework.Elements;
+﻿using OpenQA.Selenium;
 
 namespace demo.framework.Elements
 {
     public class TextBox : BaseElement
     {
-        public TextBox(By locator, String name) : base(locator, name){}
+        public TextBox(By locator, string name) : base(locator, name){}
 
-        public void SetText(String text)
+        public void SetText(string text)
         {
             WaitForElementPresent();
             GetElement().Click();
             GetElement().SendKeys(text);
-            Log.Info(String.Format("{0} :: type text '{1}'", GetName(), text));
+            Log.Info($"{GetName()} :: type text '{text}'");
         }
     }
 }

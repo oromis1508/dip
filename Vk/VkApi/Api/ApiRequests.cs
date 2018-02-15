@@ -1,9 +1,9 @@
-﻿using demo.framework.Utils.Vk;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using demo.framework.Utils;
+using demo.framework.Utils.Vk;
 
 namespace VkApi.Api
 {
-    class ApiRequests
+    internal class ApiRequests
     {
         public string CreatedPostId { get; private set; }
 
@@ -19,7 +19,7 @@ namespace VkApi.Api
             var responseJson = VkApiUtil.SendRequest(VkMethod.EditPost, RequestType.POST, 
                 new[] { $"message={newMessage}", $"post_id={postId}", $"attachments={photoId}" });
             string response = responseJson.response;
-            Assert.AreEqual("1", response, "Post edited successfully");
+            Asserts.Assert.AreEqual("1", response, "Post edited successfully");
         }
 
         public dynamic UploadPhotoOnServer(string filePath, string fileName)
@@ -48,7 +48,7 @@ namespace VkApi.Api
         {
             var jsonResponse = VkApiUtil.SendRequest(VkMethod.DeleteWallPost, RequestType.POST, new []{ $"post_id={postId}" });
             string postDeleted = jsonResponse.response;
-            Assert.AreEqual("1", postDeleted, "Post deleted successfully");
+            Asserts.Assert.AreEqual("1", postDeleted, "Post deleted successfully");
         }
     }
 }

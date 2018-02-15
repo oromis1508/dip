@@ -99,20 +99,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="framework\BaseEntity.cs" />
-    <Compile Include="framework\BaseTest.cs" />
-    <Compile Include="framework\Browser.cs" />
-    <Compile Include="framework\BrowserFactory.cs" />
-    <Compile Include="framework\Configuration.cs" />
+    <Compile Include="framework\BaseEntities\BaseEntity.cs" />
+    <Compile Include="framework\BaseEntities\BaseTest.cs" />
+    <Compile Include="framework\Utils\Asserts.cs" />
+    <Compile Include="framework\Utils\Browser.cs" />
+    <Compile Include="framework\Utils\BrowserFactory.cs" />
+    <Compile Include="framework\Utils\Configuration.cs" />
     <Compile Include="framework\Elements\BaseElement.cs" />
     <Compile Include="framework\Elements\Button.cs" />
     <Compile Include="framework\Elements\Label.cs" />
     <Compile Include="framework\Elements\Link.cs" />
     <Compile Include="framework\Elements\TextBox.cs" />
-    <Compile Include="framework\forms\BaseForm.cs" />
-    <Compile Include="framework\Logger.cs" />
-    <Compile Include="framework\RunConfigurator.cs" />
+    <Compile Include="framework\BaseEntities\BaseForm.cs" />
+    <Compile Include="framework\Utils\Logger.cs" />
+    <Compile Include="framework\Utils\RunConfigurator.cs" />
     <Compile Include="framework\Utils\RandomString.cs" />
     <Compile Include="framework\Utils\Vk\RequestType.cs" />
     <Compile Include="framework\Utils\Vk\VkApiUtil.cs" />
@@ -120,10 +120,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="framework\App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="resources\run.xml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -141,8 +137,6 @@
     <Content Include="lib\ThoughtWorks.Selenium.Core.dll" />
     <Content Include="lib\WebDriver.dll" />
     <Content Include="lib\WebDriver.Support.dll" />
-    <Content Include="resources\chromedriver.exe" />
-    <Content Include="resources\IEDriverServer.exe" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

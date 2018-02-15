@@ -1,6 +1,6 @@
 ﻿using log4net;
 
-namespace demo.framework
+namespace demo.framework.Utils
 {
     public class Logger
     {

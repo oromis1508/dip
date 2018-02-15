@@ -1,5 +1,4 @@
-﻿
-namespace demo.framework.Utils.Vk
+﻿namespace demo.framework.Utils.Vk
 {
     public enum RequestType
     {

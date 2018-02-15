@@ -1,7 +1,8 @@
-﻿using log4net;
+﻿using demo.framework.Utils;
+using log4net;
 using log4net.Config;
 
-namespace demo.framework
+namespace demo.framework.BaseEntities
 {
     public class BaseEntity
     {
@@ -9,7 +10,7 @@ namespace demo.framework
         protected BaseEntity()
         {
             XmlConfigurator.Configure();
-            Log = new Logger(LogManager.GetLogger(typeof(BaseEntity)));
+            Log = new Logger(LogManager.GetLogger("LOGGER"));
         }
     }
 }

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using demo.framework;
+﻿using System.Diagnostics;
+using demo.framework.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace demo.framework
+namespace demo.framework.BaseEntities
 {
     [TestClass]
     public class BaseTest : BaseEntity

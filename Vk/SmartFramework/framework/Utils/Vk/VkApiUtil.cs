@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using demo.framework.BaseEntities;
 using Newtonsoft.Json;
 
 namespace demo.framework.Utils.Vk
