@@ -11,7 +11,7 @@ namespace demo.framework.BaseEntities
         public void SetUp()
        {
             Browser.GetInstance();
-            Browser.GetDriver().Navigate().GoToUrl(Configuration.GetBaseUrl());
+            Browser.Driver.Navigate().GoToUrl(Configuration.GetBaseUrl());
         }
 
         [TestCleanup]
@@ -22,7 +22,7 @@ namespace demo.framework.BaseEntities
             {
                 process.Kill();
             }
-            Browser.GetDriver().Quit();
+            Browser.Driver.Quit();
         }
     }
 }

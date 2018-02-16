@@ -8,7 +8,6 @@ namespace demo.framework.Utils {
         private const string BaseUrl = "BaseUrl";
         private const string Browser = "Browser";
 
-
         public static string GetParameterValue(string key) {
             return ConfigurationManager.AppSettings.Get(key);
         }
@@ -31,6 +30,5 @@ namespace demo.framework.Utils {
         {
             return GetParameterValue(Browser);
         }
-
     }
 }

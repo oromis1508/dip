@@ -18,7 +18,6 @@ namespace demo.framework.Utils
                 var letter = (char) Random.Next(65, 126);
                 resultString += letter;
             }
-
             return resultString;
         }
     }

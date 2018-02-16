@@ -102,6 +102,7 @@
     <Compile Include="framework\BaseEntities\BaseEntity.cs" />
     <Compile Include="framework\BaseEntities\BaseTest.cs" />
     <Compile Include="framework\Utils\Asserts.cs" />
+    <Compile Include="framework\Utils\BitmapUtil.cs" />
     <Compile Include="framework\Utils\Browser.cs" />
     <Compile Include="framework\Utils\BrowserFactory.cs" />
     <Compile Include="framework\Utils\Configuration.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="framework\Utils\Logger.cs" />
     <Compile Include="framework\Utils\RunConfigurator.cs" />
     <Compile Include="framework\Utils\RandomString.cs" />
+    <Compile Include="framework\Utils\SoapUtil.cs" />
     <Compile Include="framework\Utils\Vk\RequestType.cs" />
     <Compile Include="framework\Utils\Vk\VkApiUtil.cs" />
     <Compile Include="framework\Utils\Vk\VkMethod.cs" />

@@ -1,23 +1,24 @@
-﻿using demo.framework.BaseEntities;
+﻿using System.Drawing;
+using demo.framework.BaseEntities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UnitTesting = Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace demo.framework.Utils
 {
     public class Asserts : BaseEntity
     {
-        private static bool _isSoftAssert;
-
-        private Asserts(bool isSoftAssert)
-        {
-            _isSoftAssert = isSoftAssert;
-        }
-
-        public void AreEqual(object expected, object actual, string message)
+        public static void AreEqual(object expected, object actual, string message, bool isSoftAssert = false)
         {
             try
             {
-                UnitTesting.Assert.AreEqual(expected, actual, message);
+                if (expected is Bitmap)
+                {
+                    if (!BitmapUtil.ArePixelsEqual((Bitmap) expected, (Bitmap)actual, message))
+                        return;
+                }
+                else
+                {
+                    Assert.AreEqual(expected, actual, message);
+                }
                 Log.Info($"== {message} == SUCCESSFULLY ==");
             }
             catch (AssertFailedException)
@@ -25,44 +26,40 @@ namespace demo.framework.Utils
                 Log.Fatal($"== {message} == UNSUCCESSFULLY ==");
                 Log.Fatal($"== expected: {expected} == actual: {actual} ==");
 
-                if (!_isSoftAssert)
+                if (!isSoftAssert)
                     throw new AssertFailedException();
             }
         }
 
-        public void IsTrue(bool expression, string message)
+        public static void IsTrue(bool expression, string message, bool isSoftAssert = false)
         {
             try
             {
-                UnitTesting.Assert.IsTrue(expression, message);
+                Assert.IsTrue(expression, message);
                 Log.Info($"== {message} == SUCCESSFULLY ==");
             }
             catch (AssertFailedException)
             {
                 Log.Fatal($"== {message} == UNSUCCESSFULLY ==");
 
-                if (!_isSoftAssert)
+                if (!isSoftAssert)
                     throw new AssertFailedException();
             }
         }
 
-        public void IsFalse(bool expression, string message)
+        public static void IsFalse(bool expression, string message, bool isSoftAssert = false)
         {
             try
             {
-                UnitTesting.Assert.IsFalse(expression, message);
+                Assert.IsFalse(expression, message);
                 Log.Info($"== {message} == SUCCESSFULLY ==");
             }
             catch (AssertFailedException)
             {
                 Log.Fatal($"== {message} == UNSUCCESSFULLY ==");
-                if (!_isSoftAssert)
+                if (!isSoftAssert)
                     throw new AssertFailedException();
             }
         }
-
-        public static Asserts Assert => new Asserts(false);
-
-        public static Asserts SoftAssert => new Asserts(true);
     }
 }

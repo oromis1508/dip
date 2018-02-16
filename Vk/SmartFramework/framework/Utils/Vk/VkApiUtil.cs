@@ -11,7 +11,6 @@ namespace demo.framework.Utils.Vk
     {
         private const string VkMethodsUri = @"https://api.vk.com/method/";
         private static readonly string AccessToken = $"access_token={RunConfigurator.GetValue("token")}";
-
         public static string ContentType { get; set; } = "application/JSON";
 
         public static dynamic SendRequest(VkMethod method, RequestType requestType, string[] parameters = null)

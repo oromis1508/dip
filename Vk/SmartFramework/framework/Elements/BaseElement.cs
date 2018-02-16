@@ -9,80 +9,70 @@ namespace demo.framework.Elements
 {
     public abstract class BaseElement : BaseEntity
     {
-        private readonly string _name;
-        private readonly By _locator;
+        protected string Name { get; }
+        protected By Locator { get; }
 
         protected BaseElement(By locator, string name)
         {
-            _name = name;
-            _locator = locator;
+            Name = name;
+            Locator = locator;
         }
 
         protected RemoteWebElement GetElement()
         {   
             WaitForElementPresent();
-            return (RemoteWebElement)Browser.GetDriver().FindElement(_locator); ;
-        }
-
-        protected string GetName()
-        {
-            return _name;
-        }
-
-        protected By GetLocator()
-        {
-            return _locator;
-        }
+            return (RemoteWebElement)Browser.Driver.FindElement(Locator); ;
+        }   
 
         public void Click()
         {
             WaitForElementPresent();
             GetElement().Click();
-            Log.Info($"{GetName()} :: click");
+            Log.Info($"{Name} :: click");
         }
 
         public bool IsPresent()
         {
             try
             {
-                var isPresent = Browser.GetDriver().FindElement(_locator).Displayed;
-                Log.Info($"{GetName()} : is present : {isPresent}");
+                var isPresent = Browser.Driver.FindElement(Locator).Displayed;
+                Log.Info($"{Name} : is present : {isPresent}");
                 return isPresent;
             }
             catch (Exception)
             {
-                Log.Info($"{GetName()} : is not present");
+                Log.Info($"{Name} : is not present");
                 return false;
             }
         }
 
         protected void WaitForElementPresent()
         {
-            var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
+            var wait = new WebDriverWait(Browser.Driver, TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
             try
             {
                 wait.Until(waiting =>
                 {
-                    var webElements = Browser.GetDriver().FindElements(_locator);
+                    var webElements = Browser.Driver.FindElements(Locator);
                     return webElements.Count != 0;
                 });
             }
             catch (TimeoutException)
             {
-                Log.Fatal($"Element with locator: '{_locator}' does not exists!");
+                Log.Fatal($"Element with locator: '{Locator}' does not exists!");
             }
         }
 
         public static void WaitForElementPresent(By locator, string name)
         {
-            var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
+            var wait = new WebDriverWait(Browser.Driver, TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
             try
             {
                 wait.Until(waiting =>
                 {
                     try
                     {
-                        var webElements = Browser.GetDriver().FindElements(locator);
+                        var webElements = Browser.Driver.FindElements(locator);
                         return webElements.Count != 0;
                     }
                     catch (Exception)

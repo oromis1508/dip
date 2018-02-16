@@ -26,7 +26,6 @@ namespace demo.framework.Utils
                 case "firefox":
                     return new FirefoxDriver();
             }
-
             return new ChromeDriver(System.IO.Path.GetFullPath(DriverPath));
         }
     }

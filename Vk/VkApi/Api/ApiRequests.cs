@@ -1,28 +1,19 @@
-﻿using demo.framework.Utils;
-using demo.framework.Utils.Vk;
+﻿using demo.framework.Utils.Vk;
 
 namespace VkApi.Api
 {
     internal class ApiRequests
     {
-        public string CreatedPostId { get; private set; }
-
-        public void PostMessageOnWall(string message)
+        public string PostMessageOnWall(string message)
         {
             var responseJson = VkApiUtil.SendRequest(VkMethod.PostOnWall, RequestType.POST, new[] { $"message={message}" });
-            CreatedPostId = responseJson.response.post_id;
+            return responseJson.response.post_id.ToString();
         }
 
-        public void EditPostOnWall(string newMessage, string postId, dynamic jsonUploadedPhoto)
-        {
-            string photoId = jsonUploadedPhoto.response[0].id;
-            var responseJson = VkApiUtil.SendRequest(VkMethod.EditPost, RequestType.POST, 
-                new[] { $"message={newMessage}", $"post_id={postId}", $"attachments={photoId}" });
-            string response = responseJson.response;
-            Asserts.Assert.AreEqual("1", response, "Post edited successfully");
-        }
+        public void EditPostOnWall(string newMessage, string postId, string idUploadedPhoto) => VkApiUtil.SendRequest(VkMethod.EditPost, RequestType.POST,
+                new[] { $"message={newMessage}", $"post_id={postId}", $"attachments={idUploadedPhoto}" });
 
-        public dynamic UploadPhotoOnServer(string filePath, string fileName)
+        public string UploadPhotoOnServer(string filePath, string fileName)
         {
             var jsonWithUploadServer = VkApiUtil.SendRequest(VkMethod.GetWallUploadServer, RequestType.POST);
             string uploadUri = jsonWithUploadServer.response.upload_url;
@@ -30,25 +21,20 @@ namespace VkApi.Api
             string photo = jsonWithUploadedPhoto.photo;
             string server = jsonWithUploadedPhoto.server;
             string hash = jsonWithUploadedPhoto.hash;
-            return VkApiUtil.SendRequest(VkMethod.SaveWallPhotoOnServer, RequestType.POST, new[] { $"photo={photo}", $"server={server}", $"hash={hash}" });
+            return VkApiUtil.SendRequest(VkMethod.SaveWallPhotoOnServer, RequestType.POST, new[] { $"photo={photo}", $"server={server}", $"hash={hash}" }).response[0].id.ToString();
         }
 
-        public dynamic CreateCommentToWallPost(string postId, string message) => 
+        public string CreateCommentToWallPost(string postId, string message) => 
                 VkApiUtil.SendRequest(VkMethod.CreateCommentOnWallPost, 
-                RequestType.POST, new[] { $"post_id={postId}", $"message={message}" });
+                RequestType.POST, new[] { $"post_id={postId}", $"message={message}" }).response.cid.ToString();
 
-        public bool IsPostLiked(string postId)
+        public bool IsPostLiked(string postId, string userId)
         {
-            var jsonResponse = VkApiUtil.SendRequest(VkMethod.IsPostLiked, RequestType.POST, new[] {"type=post", $"item_id={postId}"});
+            var jsonResponse = VkApiUtil.SendRequest(VkMethod.IsPostLiked, RequestType.POST, new[] {"type=post", $"item_id={postId}", $"user_id={userId}" });
             string liked = jsonResponse.response;
             return liked.Equals("1");
         }
 
-        public void DeletePost(string postId)
-        {
-            var jsonResponse = VkApiUtil.SendRequest(VkMethod.DeleteWallPost, RequestType.POST, new []{ $"post_id={postId}" });
-            string postDeleted = jsonResponse.response;
-            Asserts.Assert.AreEqual("1", postDeleted, "Post deleted successfully");
-        }
+        public void DeletePost(string postId) => VkApiUtil.SendRequest(VkMethod.DeleteWallPost, RequestType.POST, new[] { $"post_id={postId}" });
     }
 }

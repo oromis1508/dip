@@ -16,7 +16,7 @@ namespace VkAPI.Forms
         private IWebElement WaitForChildren(string xPath)
         {
             IWebElement webElement = null;
-            var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
+            var wait = new WebDriverWait(Browser.Driver, TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
             try
             {
                 wait.Until(waiting =>
@@ -42,8 +42,6 @@ namespace VkAPI.Forms
             return WaitForChildren(wallPostAttribute.ToString()).Text;
         }
 
-
-
         public void LikePost()
         {
             GetElement().FindElementByXPath("//span[contains(@class, 'post_like_link')]").Click();
@@ -52,8 +50,7 @@ namespace VkAPI.Forms
 
         public bool IsDeleted()
         {
-            IWebElement webElement = null;
-            var wait = new WebDriverWait(Browser.GetDriver(), TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
+            var wait = new WebDriverWait(Browser.Driver, TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.GetTimeout())));
             try
             {
                 wait.Until(waiting => !IsPresent());
@@ -61,7 +58,7 @@ namespace VkAPI.Forms
             }
             catch (TimeoutException)
             {
-                Log.Fatal($"Post with: '{GetLocator()}' was not delete!");
+                Log.Fatal($"Post with: '{Locator}' was not delete!");
                 return false;
             }
         }
@@ -69,7 +66,6 @@ namespace VkAPI.Forms
         public string GetImageUri(string imageHref)
         {
             var imageStyle = WaitForChildren(WallPostAttribute.PostImage(imageHref).ToString()).GetAttribute("style");
-            var s = Regex.Matches(imageStyle, ".*url\\((.*)\\).*", RegexOptions.None);
             return Regex.Matches(imageStyle, ".*url\\(\"(.*)\"\\).*", RegexOptions.None)[0].Groups[1].Value;
         }
     }

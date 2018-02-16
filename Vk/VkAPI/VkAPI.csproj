@@ -68,7 +68,8 @@
     <Compile Include="Api\ApiRequests.cs" />
     <Compile Include="Forms\MainAuthForm.cs" />
     <Compile Include="Forms\MyPage.cs" />
-    <Compile Include="Forms\NewsForm.cs" />
+    <Compile Include="Forms\NavigateMenuItem.cs" />
+    <Compile Include="Forms\NavigateMenu.cs" />
     <Compile Include="Forms\VkWallPost.cs" />
     <Compile Include="Forms\WallPostAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

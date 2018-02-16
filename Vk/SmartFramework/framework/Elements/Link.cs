@@ -4,6 +4,8 @@ namespace demo.framework.Elements
 {
     public class Link : BaseElement
     {
-        public Link(By locator, string name) : base(locator, name) { }
+        public Link(By locator, string name) : base(locator, name)
+        {        
+        }
     }
 }
