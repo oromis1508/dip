@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 
-namespace demo.framework.Utils
+namespace demo.framework.Utils.Browser
 {
     public class BrowserFactory : BaseEntity
     {

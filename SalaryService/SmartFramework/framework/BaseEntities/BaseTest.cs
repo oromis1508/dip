@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using demo.framework.Utils;
+using demo.framework.Utils.Browser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace demo.framework.BaseEntities

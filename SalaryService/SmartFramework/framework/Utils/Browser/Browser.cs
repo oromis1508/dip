@@ -3,7 +3,7 @@ using demo.framework.BaseEntities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace demo.framework.Utils
+namespace demo.framework.Utils.Browser
 {
     public class Browser : BaseEntity
     {

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+  <databaseIp>A1QA-TASKS-1</databaseIp>
+  <databasePort>1433</databasePort>
+  <databaseUser>TESTSRV</databaseUser>
+  <databasePassword>123qweASD</databasePassword>
+  <databaseName>ServiceDB</databaseName>
+  <webServiceURI>http://172.20.68.55:1060/service/Service.asmx</webServiceURI>
+</xml>

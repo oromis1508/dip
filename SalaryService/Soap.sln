@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soap", "Soap\Soap\Soap.csproj", "{7A9304E5-896E-42CA-87B4-D9C11E9329D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart", "SmartFramework\Smart.csproj", "{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A9304E5-896E-42CA-87B4-D9C11E9329D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9304E5-896E-42CA-87B4-D9C11E9329D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9304E5-896E-42CA-87B4-D9C11E9329D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9304E5-896E-42CA-87B4-D9C11E9329D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01A6F254-3D28-4D24-8B26-976C0B17C737}
+	EndGlobalSection
+EndGlobal

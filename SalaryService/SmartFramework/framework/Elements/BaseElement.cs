@@ -1,6 +1,7 @@
 ﻿using System;
 using demo.framework.BaseEntities;
 using demo.framework.Utils;
+using demo.framework.Utils.Browser;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
