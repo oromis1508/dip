@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Collections;
+using System.Data.SqlClient;
 
 namespace demo.framework.Utils
 {
@@ -15,19 +16,25 @@ namespace demo.framework.Utils
             _sqlConnection.Open();
         }
 
-        public static string[] GetResponse(string request, int responseFields)
+        public static ArrayList/*string[]*/ GetResponse(string request)
         {
             var sqlCommand = new SqlCommand(request, _sqlConnection);
             var reader = sqlCommand.ExecuteReader();
-            string[] response = {};
-            if (reader.Read())
+            var list = new ArrayList();
+            while (reader.Read())
             {
-                for (var i = 0; i < responseFields; i++)
+                var response = new string[reader.FieldCount];
+                for (var i = 0; i < reader.FieldCount; i++)
                 {
-                    response[i] = reader.GetString(i);
+
+                    response[i] = reader.GetSqlValue(i).ToString();
                 }
+                list.Add(response);
+                //return response;
             }
-            return response;
+            reader.Close();
+            return list;
+            //return null;
         }
     }
 }

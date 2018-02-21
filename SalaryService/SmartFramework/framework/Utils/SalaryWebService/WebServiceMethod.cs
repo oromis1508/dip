@@ -1,4 +1,4 @@
-﻿using demo.framework.Utils.Entities;
+﻿using demo.framework.Utils.SalaryWebService.Entities;
 
 namespace demo.framework.Utils.SalaryWebService
 {
@@ -27,32 +27,32 @@ namespace demo.framework.Utils.SalaryWebService
 
         public static WebServiceMethod GetEmployeeByExperiense(Employee employee)
         {
-            Body = $"      <exp>{employee.Experiense}</exp>\r\n" +
+            var body = $"      <exp>{employee.Experiense}</exp>\r\n" +
                    $"      <prof>{employee.ProfessionId}</prof>\r\n";
-            return new WebServiceMethod("GetEmpByExpProf");
+            return new WebServiceMethod("GetEmpByExpProf", body);
         }
 
         public static WebServiceMethod GetEmployeeByLastName(Employee employee)
         {
-            Body = $"      <ln>{employee.LastName}</ln>\r\n";
-            return new WebServiceMethod("GetEmpByLN");
+            var body = $"      <ln>{employee.LastName}</ln>\r\n";
+            return new WebServiceMethod("GetEmpByLN", body);
         }
 
         public static WebServiceMethod GetEmployeeByPrivateId(Employee employee)
         {
-            Body = $"      <pi>{employee.PrivateId}</pi>\r\n";
-            return new WebServiceMethod("GetEmpByPI");
+            var body = $"      <pi>{employee.PrivateId}</pi>\r\n";
+            return new WebServiceMethod("GetEmpByPI", body);
         }
 
-        public static WebServiceMethod GetEmployeeSalary(Employee employee)
+        public static WebServiceMethod GetEmployeeSalary(Employee employee, SalaryData salaryData)
         {
-            Body = $"      <pi>{employee.PrivateId}</pi>\r\n" +
-                   $"      <workDays>{employee.SalaryData.WorkDays}</workDays>\r\n" +
-                   $"      <sickDays>{employee.SalaryData.SickDays}</sickDays>\r\n" +
-                   $"      <overDays>{employee.SalaryData.OverDays}</overDays>\r\n" +
-                   $"      <month>{employee.SalaryData.Month}</month>\r\n" +
-                   $"      <isPriv>{employee.SalaryData.IsPrivilegy}</isPriv>\r\n";
-            return new WebServiceMethod("GetEmpSalary");
+            var body = $"      <pi>{employee.PrivateId}</pi>\r\n" +
+                   $"      <workDays>{salaryData.WorkDays}</workDays>\r\n" +
+                   $"      <sickDays>{salaryData.SickDays}</sickDays>\r\n" +
+                   $"      <overDays>{salaryData.OverDays}</overDays>\r\n" +
+                   $"      <month>{salaryData.Month}</month>\r\n" +
+                   $"      <isPriv>{salaryData.IsPrivilegy}</isPriv>\r\n";
+            return new WebServiceMethod("GetEmpSalary", body);
         }
     }
 }

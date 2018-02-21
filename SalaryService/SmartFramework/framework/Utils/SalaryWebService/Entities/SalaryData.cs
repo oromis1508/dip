@@ -1,20 +1,11 @@
-﻿namespace demo.framework.Utils.Entities
+﻿namespace demo.framework.Utils.SalaryWebService.Entities
 {
-    internal class SalaryData
+    public class SalaryData
     {
-        public int WorkDays { get; }
-        public int SickDays { get; }
-        public int OverDays { get; }
-        public string Month { get; }
-        public int IsPrivilegy { get; }
-
-        public SalaryData(int workDays, int sickDays, int overDays, string month, bool isPrivilegy)
-        {
-            WorkDays = workDays;
-            SickDays = sickDays;
-            OverDays = overDays;
-            Month = month;
-            IsPrivilegy = isPrivilegy ? 1 : 0;
-        }
+        public string WorkDays { get; set; }
+        public string SickDays { get; set; }
+        public string OverDays { get; set; }
+        public string Month { get; set; }
+        public string IsPrivilegy { get; set; }
     }
 }
