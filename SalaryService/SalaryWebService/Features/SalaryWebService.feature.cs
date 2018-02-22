@@ -70,36 +70,21 @@ namespace SalaryWebService.Features
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check functions salary web service", ((string[])(null)));
 #line 3
 this.ScenarioSetup(scenarioInfo);
-#line 4
- testRunner.Given("Connect to the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
-                        "PrivateId",
-                        "FirstName",
-                        "LastName",
-                        "MiddleName",
-                        "Experiense",
-                        "ProfessionId"});
+                        "databaseIp",
+                        "databasePort",
+                        "databaseName",
+                        "databaseUser",
+                        "databasePassword"});
             table1.AddRow(new string[] {
-                        "666",
-                        "10500id",
-                        "Узбек",
-                        "Ашан",
-                        "Анатольевич",
-                        "8",
-                        "3"});
-#line 5
- testRunner.When("New Employee Created on the web service", ((string)(null)), table1, "When ");
-#line 8
- testRunner.Then("The server sent response \'Данные добавлены успешно\' in the tag \'AddNewEmployeeRes" +
-                    "ult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 9
- testRunner.When("Request sent to the database \'Select em.id, em.private_id, em.first_name, em.last" +
-                    "_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=\'\'" +
-                    "Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
- testRunner.Then("The response data match the Employee created in the previous step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                        "A1QA-TASKS-1",
+                        "1433",
+                        "ServiceDB",
+                        "TESTSRV",
+                        "123qweASD"});
+#line 4
+ testRunner.Given("Connect to the database with settings", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -111,19 +96,22 @@ this.ScenarioSetup(scenarioInfo);
                         "ProfessionId"});
             table2.AddRow(new string[] {
                         "666",
-                        "10t500id",
-                        "Узбекен",
-                        "Рудольф",
-                        "Васгенович",
-                        "3",
-                        "6"});
+                        "10500id",
+                        "Узбек",
+                        "Ашан",
+                        "Анатольевич",
+                        "8",
+                        "3"});
+#line 7
+ testRunner.When("New Employee created on the web service with data", ((string)(null)), table2, "When ");
+#line 10
+ testRunner.Then("The server sent response \'Данные добавлены успешно\' in the tag \'AddNewEmployeeRes" +
+                    "ult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11
- testRunner.When("New Employee Updated on the web service", ((string)(null)), table2, "When ");
-#line 14
- testRunner.And("Request sent to the database \'Select em.id, em.private_id, em.first_name, em.last" +
+ testRunner.When("Request sent to the database \'Select em.id, em.private_id, em.first_name, em.last" +
                     "_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=\'\'" +
-                    "Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
+                    "Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 14
  testRunner.Then("The response data match the Employee created in the previous step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -135,14 +123,31 @@ this.ScenarioSetup(scenarioInfo);
                         "Experiense",
                         "ProfessionId"});
             table3.AddRow(new string[] {
-                        "",
-                        "5he6yeue",
-                        "Каждыг",
-                        "Азмунд",
-                        "Калгырович",
-                        "6",
-                        "5"});
-            table3.AddRow(new string[] {
+                        "666",
+                        "10t500id",
+                        "Узбекен",
+                        "Рудольф",
+                        "Васгенович",
+                        "3",
+                        "6"});
+#line 16
+ testRunner.When("The created Employee was updated on the web service by data", ((string)(null)), table3, "When ");
+#line 19
+ testRunner.And("Request sent to the database \'Select em.id, em.private_id, em.first_name, em.last" +
+                    "_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=\'\'" +
+                    "Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+ testRunner.Then("The response data match the Employee created in the previous step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "PrivateId",
+                        "FirstName",
+                        "LastName",
+                        "MiddleName",
+                        "Experiense",
+                        "ProfessionId"});
+            table4.AddRow(new string[] {
                         "636549866",
                         "",
                         "Каждыг",
@@ -150,7 +155,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Калгырович",
                         "6",
                         "5"});
-            table3.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "636549866",
                         "5he6yeue",
                         "",
@@ -158,7 +163,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Калгырович",
                         "6",
                         "5"});
-            table3.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "636549866",
                         "5he6yeue",
                         "Каждыг",
@@ -166,7 +171,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Калгырович",
                         "6",
                         "5"});
-            table3.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "636549866",
                         "5he6yeue",
                         "Каждыг",
@@ -174,7 +179,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "6",
                         "5"});
-            table3.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "636549866",
                         "5he6yeue",
                         "Каждыг",
@@ -182,7 +187,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Калгырович",
                         "",
                         "5"});
-            table3.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "636549866",
                         "5he6yeue",
                         "Каждыг",
@@ -190,19 +195,51 @@ this.ScenarioSetup(scenarioInfo);
                         "Калгырович",
                         "6",
                         ""});
-#line 16
- testRunner.When("New Employee Created on the web service", ((string)(null)), table3, "When ");
-#line 25
+            table4.AddRow(new string[] {
+                        "",
+                        "5he6yeue",
+                        "Каждыг",
+                        "Азмунд",
+                        "Калгырович",
+                        "6",
+                        "5"});
+#line 21
+ testRunner.When("New Employees without one of the parameters created on the web service with data", ((string)(null)), table4, "When ");
+#line 30
  testRunner.Then("The server sent response \'Указаны не все параметры\' in the tag \'AddNewEmployeeRes" +
                     "ult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 26
+#line 31
  testRunner.When("Employee searched on the web service by \'Employee.PrivateId\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 27
- testRunner.Then("The response match documentation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 28
- testRunner.And("Data match Employee after update", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 29
- testRunner.When("", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "private_id",
+                        "last_name",
+                        "first_name",
+                        "middle_name",
+                        "exp",
+                        "prof_name",
+                        "salary_amount"});
+#line 32
+ testRunner.Then("The web service response tags named and placed as", ((string)(null)), table5, "Then ");
+#line 36
+ testRunner.And("Data in web service response match created Employee in the begin scenario", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "WorkDays",
+                        "SickDays",
+                        "OverDays",
+                        "Month",
+                        "IsPrivilegy"});
+            table6.AddRow(new string[] {
+                        "21",
+                        "0",
+                        "0",
+                        "05-2019",
+                        "0"});
+#line 38
+ testRunner.When("Request to getting employee salary was sended to the web service", ((string)(null)), table6, "When ");
+#line 41
+ testRunner.Then("The server sent response \'1620\' in the tag \'GetEmpSalaryResult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

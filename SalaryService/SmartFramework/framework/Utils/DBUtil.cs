@@ -16,11 +16,10 @@ namespace demo.framework.Utils
             _sqlConnection.Open();
         }
 
-        public static ArrayList/*string[]*/ GetResponse(string request)
+        public static string[] GetResponse(string request)
         {
             var sqlCommand = new SqlCommand(request, _sqlConnection);
             var reader = sqlCommand.ExecuteReader();
-            var list = new ArrayList();
             while (reader.Read())
             {
                 var response = new string[reader.FieldCount];
@@ -29,12 +28,11 @@ namespace demo.framework.Utils
 
                     response[i] = reader.GetSqlValue(i).ToString();
                 }
-                list.Add(response);
-                //return response;
+                reader.Close();
+                return response;
             }
             reader.Close();
-            return list;
-            //return null;
+            return null;
         }
     }
 }

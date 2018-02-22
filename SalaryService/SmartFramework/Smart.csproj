@@ -116,6 +116,7 @@
     <Compile Include="framework\Utils\DBUtil.cs" />
     <Compile Include="framework\Utils\SalaryWebService\Entities\Employee.cs" />
     <Compile Include="framework\Utils\SalaryWebService\Entities\SalaryData.cs" />
+    <Compile Include="framework\Utils\SalaryWebService\EmployeeAssert.cs" />
     <Compile Include="framework\Utils\SalaryWebService\WebServiceMethod.cs" />
     <Compile Include="framework\Utils\Logger.cs" />
     <Compile Include="framework\Utils\RunConfigurator.cs" />
@@ -160,7 +161,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.2.3.0\build\SpecFlow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.2.3.0\build\SpecFlow.targets'))" />
-  </Target><!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

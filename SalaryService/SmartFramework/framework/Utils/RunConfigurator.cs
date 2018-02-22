@@ -8,7 +8,7 @@ namespace demo.framework.Utils
             
         public static string GetValue(string tag)
         {   
-            XmlDoc.Load("../../Resources/run.xml"); // Load the XML document from the specified file
+            XmlDoc.Load("Resources/run.xml"); // Load the XML document from the specified file
             var browser = XmlDoc.GetElementsByTagName(tag);
             return browser[0].InnerText;
         }

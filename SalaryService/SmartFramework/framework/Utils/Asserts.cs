@@ -61,5 +61,20 @@ namespace demo.framework.Utils
                     throw new AssertFailedException();
             }
         }
+
+        public static void IsNull(object expression, string message, bool isSoftAssert = false)
+        {
+            try
+            {
+                Assert.IsNull(expression, message);
+                Log.Info($"== {message} == SUCCESSFULLY ==");
+            }
+            catch (AssertFailedException)
+            {
+                Log.Fatal($"== {message} == UNSUCCESSFULLY ==");
+                if (!isSoftAssert)
+                    throw new AssertFailedException();
+            }
+        }
     }
 }
