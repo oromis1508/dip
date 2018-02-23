@@ -1,10 +1,10 @@
 package webdriver;
 
-import java.util.Date;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-
 import webdriver.elements.Label;
+
+import java.util.Date;
 
 /**
  * Base form
@@ -99,12 +99,12 @@ public abstract class BaseForm extends BaseEntity {
 		}
 	}
 
-    
-	
-
-	
-
-
-	
-
+	public boolean isFormExist() {
+		Label elem = new Label(titleLocator, title);
+		try {
+            return elem.isPresent(Integer.parseInt(getTestProperty("isFormClosedTimeout")));
+        } catch (Exception e) {
+		    return false;
+        }
+	}
 }
