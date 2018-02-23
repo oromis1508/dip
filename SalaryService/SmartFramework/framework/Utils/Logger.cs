@@ -13,7 +13,10 @@ namespace demo.framework.Utils
         public void Step(int number, string message = "")
         {
             _logger.Info($"== Step {number} ==");
-            _logger.Info($"== {message} ==");
+            if (!message.Equals(""))
+            {
+                _logger.Info($"== {message} ==");
+            }
         }
 
         public void Info(string info)

@@ -12,13 +12,38 @@ namespace SalaryWebService
         protected string FirstEmployeeInContext = "FirstEmployee";
         protected string XmlResponseInContext = "ResponseXml";
         protected string DatabaseResponseInContext = "ResponseDatabase";
+        protected string SearchResponseInContext = "SearchResponse";
 
-/*
-        [StepArgumentTransformation(@"Request sent to the database '(.*)''(.*)'")]
-        public string RequestTransform(string request, string searchCriteria)
+        private int _stepNumber;
+
+        [BeforeStep]
+        public void LogSteps()
         {
-            return request + ScenarioContext.Current.Get<Employee>(EmployeeInContext).Id;
+            Log.Step(++_stepNumber);
         }
-*/
+
+        protected void UpdateContextKey(string key, object newValue)
+        {
+            if (ScenarioContext.Current.ContainsKey(key))
+            {
+                ScenarioContext.Current.Remove(key);
+            }
+            ScenarioContext.Current.Add(key, newValue);
+        }
+
+        protected Employee CreateEmployee(string[] values)
+        {
+            return new Employee
+            {
+                Id = values[0],
+                PrivateId = values[1],
+                FirstName = values[2],
+                LastName = values[3],
+                MiddleName = values[4],
+                Experiense = values[5],
+                ProfessionId = values[6]
+            };
+        }
+
     }
 }

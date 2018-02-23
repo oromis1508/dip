@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml;
 using demo.framework.Utils;
 using demo.framework.Utils.SalaryWebService;
@@ -13,13 +12,13 @@ namespace SalaryWebService.Steps
     public class SalaryWebServiceSteps : BaseSalarySteps
     {
         [Given(@"Connect to the database with settings")]
-        public void GivenConnectToTheDatabase(Table dbData)
+        public void ConnectDb(Table dbData)
         {
             DbUtil.ConnectDatabase(dbData.Rows[0][0], dbData.Rows[0][1], dbData.Rows[0][2], dbData.Rows[0][3], dbData.Rows[0][4]);
         }
 
         [When(@"New Employee created on the web service with data")]
-        public void WhenNewEmployeeCreatedOnTheWebService(Table table)
+        public void CreateEmployeeOnWebService(Table table)
         {
             var newEmployee = table.CreateInstance<Employee>();
 
@@ -33,66 +32,55 @@ namespace SalaryWebService.Steps
             {
                 ScenarioContext.Current.Add(FirstEmployeeInContext, newEmployee);
             }
-            var responseXml = new XmlDocument();
-            try
-            {
-                responseXml = SoapUtil.SendMessage(WebServiceName, WebServiceMethod.AddEmployee(newEmployee));
-            }
-            catch(Exception e)
-            {
-                Log.Fatal($"The web service response not received, error:\n {e.Message}");
-            }
 
+            var responseXml = SoapUtil.SendMessage(WebServiceName, WebServiceMethod.AddEmployee(newEmployee));
             UpdateContextKey(XmlResponseInContext, responseXml);
         }
 
         [When(@"Request sent to the database '(.*)''(.*)'")]
-        public void WhenRequestSentToTheDatabaseEmployee_Id(string databaseRequest, string searchCriteria)
+        public void SentDbRequest(string databaseRequest, string searchCriteria)
         {
             var databaseResponse = DbUtil.GetResponse(databaseRequest + ScenarioContext.Current.Get<Employee>(EmployeeInContext).Id);
             UpdateContextKey(DatabaseResponseInContext, databaseResponse);
         }
 
         [When(@"The created Employee was updated on the web service by data")]
-        public void WhenNewEmployeeUpdatedOnTheWebService(Table table)
+        public void UpdateEmployeeOnWebService(Table table)
         {
             var newEmployee = table.CreateInstance<Employee>();
+            var responseXml = SoapUtil.SendMessage(WebServiceName, WebServiceMethod.AddEmployee(newEmployee));
 
-            var responseXml = new XmlDocument();
-            try
-            {
-                responseXml = SoapUtil.SendMessage(WebServiceName, WebServiceMethod.AddEmployee(newEmployee));
-            }
-            catch (Exception e)
-            {
-                Log.Fatal($"The web service response not received, error:\n {e.Message}");
-            }
             UpdateContextKey(XmlResponseInContext, responseXml);
-
             UpdateContextKey(EmployeeInContext, newEmployee);
         }
 
         [When(@"Employee searched on the web service by '(.*)'")]
-        public void WhenEmployeeSearchedOnTheWebServiceBy(string searchCriteria)
+        public void SearchEmployeeOnWebService(string searchCriteria)
         {
             var employee = ScenarioContext.Current.Get<Employee>(FirstEmployeeInContext);
 
             switch (searchCriteria)
             {
                 case "Employee.PrivateId":
-                    var responseXml = SoapUtil.SendMessage(WebServiceName,
+                    var responsePrivateId = SoapUtil.SendMessage(WebServiceName,
                         WebServiceMethod.GetEmployeeByPrivateId(employee));
-                    UpdateContextKey(XmlResponseInContext, responseXml);
+                    UpdateContextKey(XmlResponseInContext, responsePrivateId);
                     break;
                 case "Employee.Experiense":
+                    var responseExperiense = SoapUtil.SendMessage(WebServiceName,
+                        WebServiceMethod.GetEmployeeByExperiense(employee));
+                    UpdateContextKey(XmlResponseInContext, responseExperiense);               
                     break;
                 case "Employee.LastName":
+                    var responseLastName = SoapUtil.SendMessage(WebServiceName,
+                        WebServiceMethod.GetEmployeeByLastName(employee));
+                    UpdateContextKey(XmlResponseInContext, responseLastName);
                     break;
             }
         }
         
         [When(@"Request to getting employee salary was sended to the web service")]
-        public void WhenTheEmloyeeWorked(Table table)
+        public void SendSoapRequestOnSalary(Table table)
         {
             var salaryData = table.CreateInstance<SalaryData>();
             var employee = ScenarioContext.Current.Get<Employee>(FirstEmployeeInContext);
@@ -102,7 +90,7 @@ namespace SalaryWebService.Steps
         }
 
         [Then(@"The server sent response '(.*)' in the tag '(.*)'")]
-        public void ThenTheServerSentResponseInTheTag(string expectedTagValue, string expectedTagName)
+        public void CheckWebServiceResponseTag(string expectedTagValue, string expectedTagName)
         {
             var responseXml = ScenarioContext.Current.Get<XmlDocument>(XmlResponseInContext);
             var expectedTagsInResponse = responseXml.GetElementsByTagName(expectedTagName);
@@ -111,31 +99,48 @@ namespace SalaryWebService.Steps
             Asserts.AreEqual(expectedTagValue, responseTagValue, "Check value response tag", true);
         }
         
-        [Then(@"The response data match the Employee created in the previous step")]
-        public void ThenTheResponseDataMatchTheEmployeeCreatedInThePreviousStep()
+        [Then(@"The response data match the Employee (.*) in the previous step")]
+        public void CheckCorrectCreatingEmployee(string action)
         {
             var expectedEmployee = ScenarioContext.Current.Get<Employee>(EmployeeInContext);
-            var actualEmployee = new Employee();
             var databaseResponse = ScenarioContext.Current.Get<string[]>(DatabaseResponseInContext);
-            actualEmployee.Id = databaseResponse[0];
-            actualEmployee.PrivateId = databaseResponse[1];
-            actualEmployee.FirstName = databaseResponse[2];
-            actualEmployee.LastName = databaseResponse[3];
-            actualEmployee.MiddleName = databaseResponse[4];
-            actualEmployee.Experiense = databaseResponse[5];
-            actualEmployee.ProfessionId = databaseResponse[6];
-
-            EmployeeAssert.AreEqual(expectedEmployee, actualEmployee, "Check on correct creating Employee in database", true);
+            var actualEmployee = new Employee
+            {
+                Id = databaseResponse[0],
+                PrivateId = databaseResponse[1],
+                FirstName = databaseResponse[2],
+                LastName = databaseResponse[3],
+                MiddleName = databaseResponse[4],
+                Experiense = databaseResponse[5],
+                ProfessionId = databaseResponse[6]
+            };
+            EmployeeAssert.AreEqual(expectedEmployee, actualEmployee, $"Check on correct {action} Employee in database", true);
         }
 
         [Then(@"Data in web service response match created Employee in the begin scenario")]
-        public void ThenTheResponseMatchDocumentation()
+        public void CheckValuesSearchByPrivateId()
         {
-            var employee = ScenarioContext.Current.Get<Employee>(FirstEmployeeInContext);
+            var responseEmployee = ScenarioContext.Current.Get<string[]>(SearchResponseInContext);
+            var responseProfId =
+                DbUtil.GetResponse(
+                    $"SELECT Id from BASE_SALARIES WHERE Salary_amount={responseEmployee[6]} AND Prof_name='{responseEmployee[5]}'");
+            var expectedEmployee = ScenarioContext.Current.Get<Employee>(FirstEmployeeInContext);
+
+            var actualEmployee = new Employee
+            {
+                Id = expectedEmployee.Id,
+                PrivateId = responseEmployee[0],
+                LastName = responseEmployee[1],
+                FirstName = responseEmployee[2],
+                MiddleName = responseEmployee[3],
+                Experiense = responseEmployee[4],
+                ProfessionId = responseProfId[0]
+        };
+            EmployeeAssert.AreEqual(expectedEmployee, actualEmployee, "Check the search by PrivateID method response", true);
         }
 
         [Then(@"The web service response tags named and placed as")]
-        public void ThenDataMatchCreatedEmployeeInTheBeginScenario(Table table)
+        public void CheckTagsSearchByPrivateId(Table table)
         {
             var response = ScenarioContext.Current.Get<XmlDocument>(XmlResponseInContext);
             var responseInfo = response.GetElementsByTagName("NewDataSet")[0].FirstChild;
@@ -143,39 +148,32 @@ namespace SalaryWebService.Steps
 
             for (var i = 0; i < responseInfo.ChildNodes.Count; i++)
             {
-                Asserts.AreEqual(table.Header.ToArray()[i], responseInfo.ChildNodes[i], "Check sequence of the privateId search method response tags and the value", true);
+                Asserts.AreEqual(table.Header.ToArray()[i], responseInfo.ChildNodes[i].Name, $"Check sequence of the privateId search method response tags ({table.Header.ToArray()[i]})", true);
                 values[i] = responseInfo.ChildNodes[i].InnerText;
             }
+            ScenarioContext.Current.Add(SearchResponseInContext, values);
         }
 
         [When(@"New Employees without one of the parameters created on the web service with data")]
-        public void Thethe(Table table)
+        public void CheckCreatingEmployeesByUnvalidData(Table table)
         {
             foreach(var row in table.Rows)
             {
                 var oneRowTable = new Table(table.Header.ToArray());
                 oneRowTable.AddRow(row);
 
-                WhenNewEmployeeCreatedOnTheWebService(oneRowTable);
-                ThenTheServerSentResponseInTheTag("Указаны не все параметры", "AddNewEmployeeResult");
+                CreateEmployeeOnWebService(oneRowTable);
+                CheckWebServiceResponseTag("Указаны не все параметры", "AddNewEmployeeResult");
+
                 var request =
                     "Select em.id, em.private_id, em.first_name, em.last_name, em.middle_name, em.exp, em.Profession_id from employees em where em.";
-
                 var employee = ScenarioContext.Current.Get<Employee>(EmployeeInContext);
                 request += employee.Id.Equals("") ? $"private_id='{employee.PrivateId}'" : $"Id={employee.Id}";
-                WhenRequestSentToTheDatabaseEmployee_Id(request, "");
+                SentDbRequest(request, "");
+
                 var responseDb = ScenarioContext.Current.Get<string[]>(DatabaseResponseInContext);
                 Asserts.IsNull(responseDb, "Check on the entry in the database not created");
             }
-        }
-
-        public void UpdateContextKey(string key, object newValue)
-        {
-            if (ScenarioContext.Current.ContainsKey(key))
-            {
-                ScenarioContext.Current.Remove(key);
-            }
-            ScenarioContext.Current.Add(key, newValue);
         }
     }
 }

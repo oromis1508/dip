@@ -24,7 +24,7 @@ namespace demo.framework.Utils
             catch (AssertFailedException)
             {
                 Log.Fatal($"== {message} == UNSUCCESSFULLY ==");
-                Log.Fatal($"== expected: {expected} == actual: {actual} ==");
+                Log.Fatal($"== expected: '{expected}' == actual: '{actual}' ==");
 
                 if (!isSoftAssert)
                     throw new AssertFailedException();

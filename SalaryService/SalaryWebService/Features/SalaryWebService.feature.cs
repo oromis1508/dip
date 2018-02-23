@@ -17,8 +17,9 @@ namespace SalaryWebService.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("SalaryWebService")]
+    [TechTalk.SpecRun.FeatureAttribute("SalaryWebService", Description="\tThe scenario checks for the correct work of the web service for calculation sala" +
+        "ry\r\n\tof employees. First checked addition the employee to database in various va" +
+        "riants,\r\n\tthen checks calculation of salary of the added employee. ", SourceFile="Features\\SalaryWebService.feature", SourceLine=0)]
     public partial class SalaryWebServiceFeature
     {
         
@@ -27,27 +28,28 @@ namespace SalaryWebService.Features
 #line 1 "SalaryWebService.feature"
 #line hidden
         
-        [NUnit.Framework.OneTimeSetUpAttribute()]
+        [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SalaryWebService", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SalaryWebService", "\tThe scenario checks for the correct work of the web service for calculation sala" +
+                    "ry\r\n\tof employees. First checked addition the employee to database in various va" +
+                    "riants,\r\n\tthen checks calculation of salary of the added employee. ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.OneTimeTearDownAttribute()]
+        [TechTalk.SpecRun.FeatureCleanup()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [NUnit.Framework.TearDownAttribute()]
+        [TechTalk.SpecRun.ScenarioCleanup()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -63,12 +65,11 @@ namespace SalaryWebService.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check functions salary web service")]
+        [TechTalk.SpecRun.ScenarioAttribute("Check functions salary web service", SourceLine=5)]
         public virtual void CheckFunctionsSalaryWebService()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check functions salary web service", ((string[])(null)));
-#line 3
+#line 6
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -83,7 +84,7 @@ this.ScenarioSetup(scenarioInfo);
                         "ServiceDB",
                         "TESTSRV",
                         "123qweASD"});
-#line 4
+#line 7
  testRunner.Given("Connect to the database with settings", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -102,16 +103,16 @@ this.ScenarioSetup(scenarioInfo);
                         "Анатольевич",
                         "8",
                         "3"});
-#line 7
- testRunner.When("New Employee created on the web service with data", ((string)(null)), table2, "When ");
 #line 10
+ testRunner.When("New Employee created on the web service with data", ((string)(null)), table2, "When ");
+#line 13
  testRunner.Then("The server sent response \'Данные добавлены успешно\' in the tag \'AddNewEmployeeRes" +
                     "ult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 11
+#line 14
  testRunner.When("Request sent to the database \'Select em.id, em.private_id, em.first_name, em.last" +
                     "_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=\'\'" +
                     "Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 14
+#line 17
  testRunner.Then("The response data match the Employee created in the previous step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -130,14 +131,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Васгенович",
                         "3",
                         "6"});
-#line 16
- testRunner.When("The created Employee was updated on the web service by data", ((string)(null)), table3, "When ");
 #line 19
+ testRunner.When("The created Employee was updated on the web service by data", ((string)(null)), table3, "When ");
+#line 22
  testRunner.And("Request sent to the database \'Select em.id, em.private_id, em.first_name, em.last" +
                     "_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=\'\'" +
                     "Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
- testRunner.Then("The response data match the Employee created in the previous step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 23
+ testRunner.Then("The response data match the Employee updated in the previous step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -203,12 +204,12 @@ this.ScenarioSetup(scenarioInfo);
                         "Калгырович",
                         "6",
                         "5"});
-#line 21
+#line 24
  testRunner.When("New Employees without one of the parameters created on the web service with data", ((string)(null)), table4, "When ");
-#line 30
+#line 33
  testRunner.Then("The server sent response \'Указаны не все параметры\' in the tag \'AddNewEmployeeRes" +
                     "ult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 31
+#line 34
  testRunner.When("Employee searched on the web service by \'Employee.PrivateId\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -219,9 +220,9 @@ this.ScenarioSetup(scenarioInfo);
                         "exp",
                         "prof_name",
                         "salary_amount"});
-#line 32
+#line 35
  testRunner.Then("The web service response tags named and placed as", ((string)(null)), table5, "Then ");
-#line 36
+#line 39
  testRunner.And("Data in web service response match created Employee in the begin scenario", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -236,12 +237,18 @@ this.ScenarioSetup(scenarioInfo);
                         "0",
                         "05-2019",
                         "0"});
-#line 38
- testRunner.When("Request to getting employee salary was sended to the web service", ((string)(null)), table6, "When ");
 #line 41
+ testRunner.When("Request to getting employee salary was sended to the web service", ((string)(null)), table6, "When ");
+#line 44
  testRunner.Then("The server sent response \'1620\' in the tag \'GetEmpSalaryResult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.TestRunCleanup()]
+        public virtual void TestRunCleanup()
+        {
+            TechTalk.SpecFlow.TestRunnerManager.GetTestRunner().OnTestRunEnd();
         }
     }
 }

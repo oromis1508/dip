@@ -1,4 +1,7 @@
 ﻿Feature: SalaryWebService
+	The scenario checks for the correct work of the web service for calculation salary
+	of employees. First checked addition the employee to database in various variants,
+	then checks calculation of salary of the added employee. 
 
 Scenario: Check functions salary web service
 	Given Connect to the database with settings
@@ -17,7 +20,7 @@ Scenario: Check functions salary web service
 	| Id  | PrivateId  | FirstName   | LastName    | MiddleName | Experiense | ProfessionId |
 	| 666 | 10t500id   | Узбекен     | Рудольф     | Васгенович | 3          | 6            |
 	And Request sent to the database 'Select em.id, em.private_id, em.first_name, em.last_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=''Employee.Id'
-	Then The response data match the Employee created in the previous step
+	Then The response data match the Employee updated in the previous step
 	When New Employees without one of the parameters created on the web service with data
 	| Id        | PrivateId  | FirstName  | LastName    | MiddleName | Experiense | ProfessionId |
 	| 636549866 |            | Каждыг     | Азмунд      | Калгырович | 6          | 5            |
