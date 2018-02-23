@@ -1,6 +1,5 @@
 package webdriver.elements;
 
-import forms.algorithm.Cell;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
