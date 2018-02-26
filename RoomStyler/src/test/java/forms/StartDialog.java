@@ -8,11 +8,15 @@ public class StartDialog extends BaseForm{
 
     private Button btnCloseDialog = new Button(By.className("popin-close-title"), "to close start dialog");
 
-    protected StartDialog() {
+    public StartDialog() {
         super(By.id("welcome-popup"), "Start dialog");
     }
 
     public void closeDialog() {
-        btnCloseDialog.click();
+        btnCloseDialog.clickAndWait();
+    }
+
+    public boolean isDialogClosed() {
+        return isFormClosed();
     }
 }

@@ -1,6 +1,7 @@
 package webdriver;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import webdriver.elements.Label;
 
@@ -99,10 +100,13 @@ public abstract class BaseForm extends BaseEntity {
 		}
 	}
 
-	public boolean isFormExist() {
+	public boolean isFormClosed() {
+		int waitForFormClosed = Integer.parseInt(getTestProperty("isFormClosedTimeout"));
 		Label elem = new Label(titleLocator, title);
+		WebDriverWait wait = new WebDriverWait(Browser.getInstance().getDriver(), waitForFormClosed);
 		try {
-            return elem.isPresent(Integer.parseInt(getTestProperty("isFormClosedTimeout")));
+			wait.until((driver) -> !elem.isPresent());
+            return true;
         } catch (Exception e) {
 		    return false;
         }
