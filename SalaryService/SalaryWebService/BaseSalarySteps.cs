@@ -8,11 +8,11 @@ namespace SalaryWebService
     public class BaseSalarySteps : BaseEntity
     {
         protected static string WebServiceName = Configuration.GetParameterValue("webServiceURI");
-        protected string EmployeeInContext = "NewEmployee";
-        protected string FirstEmployeeInContext = "FirstEmployee";
-        protected string XmlResponseInContext = "ResponseXml";
-        protected string DatabaseResponseInContext = "ResponseDatabase";
-        protected string SearchResponseInContext = "SearchResponse";
+        protected static string DbIp = Configuration.GetParameterValue("webServiceURI");
+        protected static string DbPort = Configuration.GetParameterValue("webServiceURI");
+        protected static string DbName = Configuration.GetParameterValue("webServiceURI");
+        protected static string DbUser = Configuration.GetParameterValue("webServiceURI");
+        protected static string DbPassword = Configuration.GetParameterValue("webServiceURI");
 
         private int _stepNumber;
 
@@ -20,6 +20,18 @@ namespace SalaryWebService
         public void LogSteps()
         {
             Log.Step(++_stepNumber);
+        }
+
+        [BeforeScenario]
+        public void ConnectDb()
+        {
+            DbUtil.ConnectDatabase(DbIp, DbPort, DbName, DbUser, DbPassword);
+        }
+
+        [AfterScenario]
+        public void CloseConnectDb()
+        {
+            DbUtil.CloseConnection();
         }
 
         protected void UpdateContextKey(string key, object newValue)

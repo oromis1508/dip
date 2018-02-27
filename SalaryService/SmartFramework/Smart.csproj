@@ -103,7 +103,6 @@
     <Compile Include="framework\BaseEntities\BaseEntity.cs" />
     <Compile Include="framework\BaseEntities\BaseTest.cs" />
     <Compile Include="framework\Utils\Asserts.cs" />
-    <Compile Include="framework\Utils\BitmapUtil.cs" />
     <Compile Include="framework\Utils\Browser\Browser.cs" />
     <Compile Include="framework\Utils\Browser\BrowserFactory.cs" />
     <Compile Include="framework\Utils\Configuration.cs" />
@@ -113,18 +112,14 @@
     <Compile Include="framework\Elements\Link.cs" />
     <Compile Include="framework\Elements\TextBox.cs" />
     <Compile Include="framework\BaseEntities\BaseForm.cs" />
-    <Compile Include="framework\Utils\DBUtil.cs" />
-    <Compile Include="framework\Utils\SalaryWebService\Entities\Employee.cs" />
-    <Compile Include="framework\Utils\SalaryWebService\Entities\SalaryData.cs" />
+    <Compile Include="framework\Utils\Database\DatabaseRequests.cs" />
+    <Compile Include="framework\Utils\Database\DBUtil.cs" />
     <Compile Include="framework\Utils\SalaryWebService\EmployeeAssert.cs" />
     <Compile Include="framework\Utils\SalaryWebService\WebServiceMethod.cs" />
     <Compile Include="framework\Utils\Logger.cs" />
     <Compile Include="framework\Utils\RunConfigurator.cs" />
     <Compile Include="framework\Utils\Randoms.cs" />
     <Compile Include="framework\Utils\SoapUtil.cs" />
-    <Compile Include="framework\Utils\Vk\RequestType.cs" />
-    <Compile Include="framework\Utils\Vk\VkApiUtil.cs" />
-    <Compile Include="framework\Utils\Vk\VkMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +148,12 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SalaryWebServiceEntities\SalaryWebServiceEntities.csproj">
+      <Project>{39095f0a-7377-41f4-b687-531e80e65284}</Project>
+      <Name>SalaryWebServiceEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

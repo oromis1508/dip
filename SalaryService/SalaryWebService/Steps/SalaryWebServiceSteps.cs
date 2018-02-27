@@ -11,21 +11,15 @@ namespace SalaryWebService.Steps
     [Binding]
     public class SalaryWebServiceSteps : BaseSalarySteps
     {
-        [Given(@"Connect to the database with settings")]
-        public void ConnectDb(Table dbData)
-        {
-            DbUtil.ConnectDatabase(dbData.Rows[0][0], dbData.Rows[0][1], dbData.Rows[0][2], dbData.Rows[0][3], dbData.Rows[0][4]);
-        }
 
-        [When(@"New Employee created on the web service with data")]
+        [When(@"I create new employee on the web service with the data")]
         public void CreateEmployeeOnWebService(Table table)
         {
             var newEmployee = table.CreateInstance<Employee>();
 
-            if (!newEmployee.Id.Equals(""))
-            {
-                DbUtil.GetResponse($"Delete FROM Employees WHERE Id={newEmployee.Id}");
-            }
+            DbUtil.GetResponse(!newEmployee.Id.Equals("")
+                ? $"Delete FROM Employees WHERE Id={newEmployee.Id}"
+                : $"Delete FROM Employees WHERE private_id={newEmployee.PrivateId}");
             UpdateContextKey(EmployeeInContext, newEmployee);
 
             if (!ScenarioContext.Current.ContainsKey(FirstEmployeeInContext))

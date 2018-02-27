@@ -47,9 +47,6 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="SpecRun.SpecFlowPlugin, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecRun.SpecFlow.2-3-0.1.7.0\lib\net45\SpecRun.SpecFlowPlugin.dll</HintPath>
     </Reference>
@@ -71,10 +68,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSalarySteps.cs" />
-    <Compile Include="Features\SalaryWebService.feature.cs">
+    <Compile Include="Features\CalculateEmployeeSalary.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SalaryWebService.feature</DependentUpon>
+      <DependentUpon>CalculateEmployeeSalary.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CreateEmployee.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateEmployee.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\SearchEmployeeByPrivateId.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchEmployeeByPrivateId.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\UpdateEmployee.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateEmployee.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\SalaryWebServiceSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,10 +96,22 @@
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
-    <None Include="Features\SalaryWebService.feature">
+    <None Include="Features\CalculateEmployeeSalary.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SalaryWebService.feature.cs</LastGenOutput>
+      <LastGenOutput>CalculateEmployeeSalary.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SearchEmployeeByPrivateId.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SearchEmployeeByPrivateId.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UpdateEmployee.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UpdateEmployee.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Features\CreateEmployee.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateEmployee.feature.cs</LastGenOutput>
     </None>
     <None Include="runtests.cmd" />
     <None Include="SpecRunTestProfile.xsd">
@@ -98,6 +122,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SalaryWebServiceEntities\SalaryWebServiceEntities.csproj">
+      <Project>{39095F0A-7377-41F4-B687-531E80E65284}</Project>
+      <Name>SalaryWebServiceEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartFramework\Smart.csproj">
       <Project>{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}</Project>
       <Name>Smart</Name>

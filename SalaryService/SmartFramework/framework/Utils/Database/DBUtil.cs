@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace demo.framework.Utils
 {
@@ -9,11 +8,14 @@ namespace demo.framework.Utils
 
         public static void ConnectDatabase(string ip, string port, string dbName, string userId, string password)
         {
-            _sqlConnection = new SqlConnection($"Data Source={ip},{port};" +
-                                              $"Initial Catalog={dbName};" +
-                                              $"User ID={userId};" +
-                                              $"Password={password}");
-            _sqlConnection.Open();
+            if (_sqlConnection == null)
+            {
+                _sqlConnection = new SqlConnection($"Data Source={ip},{port};" +
+                                                   $"Initial Catalog={dbName};" +
+                                                   $"User ID={userId};" +
+                                                   $"Password={password}");
+                _sqlConnection.Open();
+            }
         }
 
         public static string[] GetResponse(string request)
@@ -34,5 +36,7 @@ namespace demo.framework.Utils
             reader.Close();
             return null;
         }
+
+        public static void CloseConnection() => _sqlConnection?.Close();
     }
 }
