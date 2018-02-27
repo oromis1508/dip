@@ -9,7 +9,7 @@ public class StartDialog extends BaseForm{
     private Button btnCloseDialog = new Button(By.className("popin-close-title"), "to close start dialog");
 
     public StartDialog() {
-        super(By.id("welcome-popup"), "Start dialog");
+        super(By.id("popin-background"), "Start dialog");
     }
 
     public void closeDialog() {

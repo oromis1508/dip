@@ -229,7 +229,8 @@ public abstract class BaseElement extends BaseEntity {
 	        browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", element);
 	    }
 	    WebDriverWait wait = new WebDriverWait(browser.getDriver(), 10);
-		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+		wait.until((driver) -> ExpectedConditions.elementToBeClickable(element));
+		element.click();
 	}
 
 	

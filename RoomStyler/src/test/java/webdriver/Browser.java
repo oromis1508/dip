@@ -1,21 +1,16 @@
 package webdriver;
 
-import static webdriver.Logger.getLoc;
-
-import java.util.concurrent.TimeUnit;
-
-import javax.naming.NamingException;
-
-
+import com.google.common.base.Strings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import webdriver.elements.Label;
-import com.google.common.base.Strings;
+
+import javax.naming.NamingException;
+import java.util.concurrent.TimeUnit;
+
+import static webdriver.Logger.getLoc;
 
 /**
  * The main class to access the browser, which extends the capabilities of the standard Webdriver
@@ -166,8 +161,7 @@ public final class Browser {
 		WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(getTimeoutForPageLoad()));
 
 		try {
-			wait.until((ExpectedCondition<Boolean>) new ExpectedCondition<Boolean>() {
-				public Boolean apply(final WebDriver d) {
+			wait.until((d) -> {{
 					if (!(d instanceof JavascriptExecutor)) {
 						return true;
 					}

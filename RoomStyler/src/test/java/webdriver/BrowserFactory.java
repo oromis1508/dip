@@ -2,6 +2,7 @@ package webdriver;
 
 import com.opera.core.systems.OperaDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -36,8 +37,8 @@ public abstract class BrowserFactory {
 		File myFile = null;
 		switch (type) {
 		case CHROME:
-			DesiredCapabilities cp1 = DesiredCapabilities.chrome();
-			cp1.setCapability("chrome.switches", Arrays.asList("--disable-popup-blocking"));
+			ChromeOptions options = new ChromeOptions();
+			options.setCapability("chrome.switches", Arrays.asList("--disable-popup-blocking"));
 
 			if(System.getProperty("os.name").toLowerCase().contains("win")) {
 				chromeDriverName += ".exe";
@@ -49,7 +50,7 @@ public abstract class BrowserFactory {
 				Logger.getInstance().debug(e1.getMessage());
 			}
 			System.setProperty("webdriver.chrome.driver", myFile.getAbsolutePath());
-			driver = new ChromeDriver(cp1);
+			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			break;
 			

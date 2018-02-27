@@ -101,7 +101,7 @@ public abstract class BaseForm extends BaseEntity {
 	}
 
 	public boolean isFormClosed() {
-		int waitForFormClosed = Integer.parseInt(getTestProperty("isFormClosedTimeout"));
+		int waitForFormClosed = Integer.parseInt(getTestProperty("waitingTimeout"));
 		Label elem = new Label(titleLocator, title);
 		WebDriverWait wait = new WebDriverWait(Browser.getInstance().getDriver(), waitForFormClosed);
 		try {
