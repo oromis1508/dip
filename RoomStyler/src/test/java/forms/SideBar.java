@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 public class SideBar extends BaseForm{
 
-
     private Label productDimensions = new Label(By.xpath("//p[@class='dimensions']"));
     private String sceneItemXpath = "//div[@class='scene']//b[@class='%s']";
     private String sideBarItemXpath = "//a[@title='%s']";
@@ -76,7 +75,6 @@ public class SideBar extends BaseForm{
                     return false;
                 }
             });
-            //new Screen().find(item.toString()).wait(item.toString(), waitForItem);
             return true;
         } catch (Exception findFailed) {
             return false;

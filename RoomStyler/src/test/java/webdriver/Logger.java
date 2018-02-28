@@ -39,7 +39,7 @@ public final class Logger {
 	 * @param key Key
 	 * @return Test property
 	 */
-	protected static String getTestProperty(final String key) {
+	public static String getTestProperty(final String key) {
 		return testManager.getProperty(key);
 	}
 

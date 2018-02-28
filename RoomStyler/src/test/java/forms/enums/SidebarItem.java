@@ -20,4 +20,13 @@ public enum SidebarItem {
     public String toString() {
         return text;
     }
+
+    public static SidebarItem getMenu(String menuName) {
+        for (SidebarItem item :values()) {
+            if(item.text.equals(menuName)) {
+                return item;
+            }
+        }
+        return null;
+    }
 }
