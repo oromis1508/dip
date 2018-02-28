@@ -4,13 +4,13 @@
 	the function of search employee by privateId
 
 Scenario: Search the employee by privateId
-	Given The created employee on the web service with the data
+	Given The employee created on the web service with the data
 	| Id  | PrivateId | FirstName | LastName | MiddleName  | Experiense | ProfessionId |
 	| 666 | 10500id   | Узбек     | Ашан     | Анатольевич | 8          | 3            |
 
 	When I search the employee on the web service by 'PrivateId'
 	Then The web service response tags named and placed as
-	| Tags          |
+	| Tag           |
 	| private_id    |
 	| last_name     |
 	| first_name    |
@@ -23,4 +23,3 @@ Scenario: Search the employee by privateId
 	And Data in the web service response match the employee with the data
 	| Id  | PrivateId | FirstName | LastName | MiddleName  | Experiense | ProfessionId |
 	| 666 | 10500id   | Узбек     | Ашан     | Анатольевич | 8          | 3            |
-

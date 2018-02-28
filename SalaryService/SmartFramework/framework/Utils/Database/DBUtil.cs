@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace demo.framework.Utils
+namespace demo.framework.Utils.Database
 {
     public static class DbUtil
     {
@@ -18,9 +18,9 @@ namespace demo.framework.Utils
             }
         }
 
-        public static string[] GetResponse(string request)
+        public static string[] GetResponse(DatabaseRequests request)
         {
-            var sqlCommand = new SqlCommand(request, _sqlConnection);
+            var sqlCommand = new SqlCommand(request.Body, _sqlConnection);
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {

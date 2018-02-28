@@ -89,7 +89,7 @@ this.ScenarioSetup(scenarioInfo);
                         "8",
                         "3"});
 #line 7
- testRunner.Given("Created the employee on the web service with the data", ((string)(null)), table1, "Given ");
+ testRunner.Given("The employee created on the web service with the data", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkDays",

@@ -4,7 +4,7 @@
 	the function of calculating the salary of the added employee
 
 Scenario: Calculate the employee salary
-	Given Created the employee on the web service with the data
+	Given The employee created on the web service with the data
 	| Id  | PrivateId | FirstName | LastName | MiddleName  | Experiense | ProfessionId |
 	| 666 | 10500id   | Узбек     | Ашан     | Анатольевич | 8          | 3            |
 

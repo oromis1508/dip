@@ -89,12 +89,12 @@ this.ScenarioSetup(scenarioInfo);
                         "8",
                         "3"});
 #line 7
- testRunner.Given("The created employee on the web service with the data", ((string)(null)), table1, "Given ");
+ testRunner.Given("The employee created on the web service with the data", ((string)(null)), table1, "Given ");
 #line 11
  testRunner.When("I search the employee on the web service by \'PrivateId\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Tags"});
+                        "Tag"});
             table2.AddRow(new string[] {
                         "private_id"});
             table2.AddRow(new string[] {

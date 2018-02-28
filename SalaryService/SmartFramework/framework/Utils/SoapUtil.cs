@@ -51,7 +51,7 @@ namespace demo.framework.Utils
                           " but found exception:");
                 Log.Fatal(e.Message);
             }
-            return new XmlDocument();
+            return null;
         }
     }
 }

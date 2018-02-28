@@ -44,8 +44,8 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SpecRun.SpecFlowPlugin, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SpecRun.SpecFlow.2-3-0.1.7.0\lib\net45\SpecRun.SpecFlowPlugin.dll</HintPath>
@@ -67,16 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseSalarySteps.cs" />
     <Compile Include="Features\CalculateEmployeeSalary.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CalculateEmployeeSalary.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\CreateEmployee.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CreateEmployee.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\SearchEmployeeByPrivateId.feature.cs">
       <AutoGen>True</AutoGen>
@@ -88,7 +82,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateEmployee.feature</DependentUpon>
     </Compile>
-    <Compile Include="Steps\SalaryWebServiceSteps.cs" />
+    <Compile Include="Steps\DatabaseSteps.cs" />
+    <Compile Include="Steps\BaseSalarySteps.cs" />
+    <Compile Include="Features\CreateEmployee.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateEmployee.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\CheckWebServiceResponseSteps.cs" />
+    <Compile Include="Steps\WebServiceFunctionsSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

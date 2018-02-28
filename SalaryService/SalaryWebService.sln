@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalaryWebService", "SalaryW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart", "SmartFramework\Smart.csproj", "{420D4ED4-F2DB-4FB3-AC7F-C6E7733A401C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalaryWebServiceEntities", "SalaryWebServiceEntities\SalaryWebServiceEntities.csproj", "{39095F0A-7377-41F4-B687-531E80E65284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalaryWebServiceEntities", "SalaryWebServiceEntities\SalaryWebServiceEntities.csproj", "{39095F0A-7377-41F4-B687-531E80E65284}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using demo.framework.BaseEntities;
+﻿using demo.framework.BaseEntities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace demo.framework.Utils
@@ -10,15 +9,7 @@ namespace demo.framework.Utils
         {
             try
             {
-                if (expected is Bitmap)
-                {
-                    if (!BitmapUtil.ArePixelsEqual((Bitmap) expected, (Bitmap)actual, message))
-                        return;
-                }
-                else
-                {
-                    Assert.AreEqual(expected, actual, message);
-                }
+                Assert.AreEqual(expected, actual, message);
                 Log.Info($"== {message} == SUCCESSFULLY ==");
             }
             catch (AssertFailedException)

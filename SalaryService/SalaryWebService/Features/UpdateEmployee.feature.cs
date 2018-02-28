@@ -65,13 +65,11 @@ namespace SalaryWebService.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Update the created employee", new string[] {
-                "mytag"}, SourceLine=6)]
+        [TechTalk.SpecRun.ScenarioAttribute("Update the created employee", SourceLine=5)]
         public virtual void UpdateTheCreatedEmployee()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update the created employee", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update the created employee", ((string[])(null)));
+#line 6
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -90,8 +88,8 @@ this.ScenarioSetup(scenarioInfo);
                         "Анатольевич",
                         "8",
                         "3"});
-#line 8
- testRunner.Given("Created the employee on the web service with the data", ((string)(null)), table1, "Given ");
+#line 7
+ testRunner.Given("The employee created on the web service with the data", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -109,14 +107,21 @@ this.ScenarioSetup(scenarioInfo);
                         "Васгенович",
                         "3",
                         "6"});
-#line 11
- testRunner.When("I update the created employee on the web service by the data", ((string)(null)), table2, "When ");
-#line 14
-  testRunner.And("I send request to the database \'Select em.id, em.private_id, em.first_name, em.la" +
-                    "st_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=" +
-                    "\'\'Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+ testRunner.When("I update employee on the web service with the data", ((string)(null)), table2, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "SeachFields",
+                        "TableName",
+                        "SeachCriteria"});
+            table3.AddRow(new string[] {
+                        "id, private_id, first_name, last_name, middle_name, exp, Profession_id",
+                        "employees",
+                        "id=666"});
+#line 13
+  testRunner.And("I send request to the database to search with the parameters", ((string)(null)), table3, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
                         "PrivateId",
                         "FirstName",
@@ -124,7 +129,7 @@ this.ScenarioSetup(scenarioInfo);
                         "MiddleName",
                         "Experiense",
                         "ProfessionId"});
-            table3.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         "666",
                         "10t500id",
                         "Узбекен",
@@ -132,8 +137,8 @@ this.ScenarioSetup(scenarioInfo);
                         "Васгенович",
                         "3",
                         "6"});
-#line 15
- testRunner.Then("The response data match the Employee with the data", ((string)(null)), table3, "Then ");
+#line 16
+ testRunner.Then("The data of the database response match the employee with the data", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

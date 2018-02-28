@@ -1,4 +1,4 @@
-﻿namespace demo.framework.Utils.SalaryWebService.Entities
+﻿namespace SalaryWebServiceEntities.Entities
 {
     public class SalaryData
     {

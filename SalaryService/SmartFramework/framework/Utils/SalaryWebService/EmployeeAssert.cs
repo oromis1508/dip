@@ -1,4 +1,4 @@
-﻿using demo.framework.Utils.SalaryWebService.Entities;
+﻿using SalaryWebServiceEntities.Entities;
 
 namespace demo.framework.Utils.SalaryWebService
 {

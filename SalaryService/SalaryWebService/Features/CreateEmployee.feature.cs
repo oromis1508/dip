@@ -17,9 +17,15 @@ namespace SalaryWebService.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("CreateEmployee", Description="\tThe feature checks for the correct work of the web service\r\n\tfor calculation sal" +
-        "ary of employees. The feature checks \r\n\tthe function of adding new employee with" +
-        " valid and unvalid data", SourceFile="Features\\CreateEmployee.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("CreateEmployee", Description=@"	The feature checks for the correct work of the web service
+	for calculation salary of employees. The feature checks 
+	the function of adding new employee with valid and unvalid data
+	The feature checks 
+	the function of updating added employee by add with new data but old Id
+	The feature checks 
+	the function of search employee by privateId
+	The feature checks 
+	the function of calculating the salary of the added employee", SourceFile="Features\\CreateEmployee.feature", SourceLine=0)]
     public partial class CreateEmployeeFeature
     {
         
@@ -32,9 +38,15 @@ namespace SalaryWebService.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateEmployee", "\tThe feature checks for the correct work of the web service\r\n\tfor calculation sal" +
-                    "ary of employees. The feature checks \r\n\tthe function of adding new employee with" +
-                    " valid and unvalid data", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateEmployee", @"	The feature checks for the correct work of the web service
+	for calculation salary of employees. The feature checks 
+	the function of adding new employee with valid and unvalid data
+	The feature checks 
+	the function of updating added employee by add with new data but old Id
+	The feature checks 
+	the function of search employee by privateId
+	The feature checks 
+	the function of calculating the salary of the added employee", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,11 +77,11 @@ namespace SalaryWebService.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with valid data", SourceLine=10)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with valid data", SourceLine=11)]
         public virtual void CreateTheEmployeeWithValidData()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create the employee with valid data", ((string[])(null)));
-#line 11
+#line 12
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -88,43 +100,22 @@ this.ScenarioSetup(scenarioInfo);
                         "Анатольевич",
                         "8",
                         "3"});
-#line 12
- testRunner.When("I create new employee on the web service with the data", ((string)(null)), table1, "When ");
-#line 15
+#line 13
+ testRunner.When("I create employee on the web service with the data", ((string)(null)), table1, "When ");
+#line 16
  testRunner.Then("The server sent the response \'Данные добавлены успешно\' in the tag \'AddNewEmploye" +
                     "eResult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 16
- testRunner.When("I send request to the database \'Select em.id, em.private_id, em.first_name, em.la" +
-                    "st_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=" +
-                    "\'\'Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
-                        "PrivateId",
-                        "FirstName",
-                        "LastName",
-                        "MiddleName",
-                        "Experiense",
-                        "ProfessionId"});
+                        "SeachFields",
+                        "TableName",
+                        "SeachCriteria"});
             table2.AddRow(new string[] {
-                        "666",
-                        "10500id",
-                        "Узбек",
-                        "Ашан",
-                        "Анатольевич",
-                        "8",
-                        "3"});
-#line 19
- testRunner.Then("The response data match the employee with the data", ((string)(null)), table2, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        public virtual void CreateTheEmployeeWithUnvalidData(string id, string privateId, string firstName, string lastName, string middleName, string experiense, string professionId, string[] exampleTags)
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create the employee with unvalid data", exampleTags);
-#line 24
-this.ScenarioSetup(scenarioInfo);
+                        "id, private_id, first_name, last_name, middle_name, exp, Profession_id",
+                        "employees",
+                        "id=666"});
+#line 17
+ testRunner.When("I send request to the database to search with the parameters", ((string)(null)), table2, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -135,6 +126,34 @@ this.ScenarioSetup(scenarioInfo);
                         "Experiense",
                         "ProfessionId"});
             table3.AddRow(new string[] {
+                        "666",
+                        "10500id",
+                        "Узбек",
+                        "Ашан",
+                        "Анатольевич",
+                        "8",
+                        "3"});
+#line 22
+ testRunner.Then("The data of the database response match the employee with the data", ((string)(null)), table3, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        public virtual void CreateTheEmployeeWithUnvalidData(string id, string privateId, string firstName, string lastName, string middleName, string experiense, string professionId, string seachCriteria, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create the employee with unvalid data", exampleTags);
+#line 27
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "PrivateId",
+                        "FirstName",
+                        "LastName",
+                        "MiddleName",
+                        "Experiense",
+                        "ProfessionId"});
+            table4.AddRow(new string[] {
                         string.Format("{0}", id),
                         string.Format("{0}", privateId),
                         string.Format("{0}", firstName),
@@ -142,74 +161,81 @@ this.ScenarioSetup(scenarioInfo);
                         string.Format("{0}", middleName),
                         string.Format("{0}", experiense),
                         string.Format("{0}", professionId)});
-#line 26
- testRunner.When("I create new employee on the web service with the data", ((string)(null)), table3, "When ");
-#line 29
+#line 28
+ testRunner.When("I create employee on the web service with the data", ((string)(null)), table4, "When ");
+#line 31
  testRunner.Then("The server sent the response \'Указаны не все параметры\' in the tag \'AddNewEmploye" +
                     "eResult\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 30
- testRunner.When("I send request to the database \'Select em.id, em.private_id, em.first_name, em.la" +
-                    "st_name, em.middle_name, em.exp, em.Profession_id from employees em where em.id=" +
-                    "\'\'Employee.Id\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 31
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "SeachFields",
+                        "TableName",
+                        "SeachCriteria"});
+            table5.AddRow(new string[] {
+                        "id, private_id, first_name, last_name, middle_name, exp, Profession_id",
+                        "employees",
+                        string.Format("{0}", seachCriteria)});
+#line 32
+ testRunner.When("I send request to the database to search with the parameters", ((string)(null)), table5, "When ");
+#line 35
  testRunner.Then("The database response not contains entries", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 0", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 0", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant0()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("636549866", "", "Каждыг", "Азмунд", "Калгырович", "6", "5", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("636549866", "", "Каждыг", "Азмунд", "Калгырович", "6", "5", "id=636549866", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 1", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 1", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant1()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "", "Азмунд", "Калгырович", "6", "5", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "", "Азмунд", "Калгырович", "6", "5", "id=636549866", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 2", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 2", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant2()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "", "Калгырович", "6", "5", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "", "Калгырович", "6", "5", "id=636549866", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 3", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 3", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant3()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "Азмунд", "", "6", "5", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "Азмунд", "", "6", "5", "id=636549866", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 4", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 4", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant4()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "Азмунд", "Калгырович", "", "5", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "Азмунд", "Калгырович", "", "5", "id=636549866", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 5", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 5", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant5()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "Азмунд", "Калгырович", "6", "", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("636549866", "5he6yeue", "Каждыг", "Азмунд", "Калгырович", "6", "", "id=636549866", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 6", SourceLine=34)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create the employee with unvalid data, Variant 6", SourceLine=38)]
         public virtual void CreateTheEmployeeWithUnvalidData_Variant6()
         {
-#line 24
-this.CreateTheEmployeeWithUnvalidData("", "5he6yeue", "Каждыг", "Азмунд", "Калгырович", "6", "5", ((string[])(null)));
+#line 27
+this.CreateTheEmployeeWithUnvalidData("", "5he6yeue", "Каждыг", "Азмунд", "Калгырович", "6", "5", "private_id=\'5he6yeue\'", ((string[])(null)));
 #line hidden
         }
         
