@@ -4,13 +4,10 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import webdriver.Browser.Browsers;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import static org.testng.AssertJUnit.assertTrue;
-
-
 
 /**
  * BaseEntity
@@ -23,6 +20,7 @@ public abstract class BaseEntity {
 	protected static boolean isLogged = false;
 	protected static int screenIndex = 0;
 	protected ITestContext context;
+	protected int waitingTimeout = Integer.parseInt(getTestProperty("waitingTimeout"));
 
 	/**
 	 * Get locale
@@ -50,8 +48,6 @@ public abstract class BaseEntity {
 	 * @return null
 	 */
 	protected abstract String formatLogMsg(String message);
-
-	
 
 	/**
 	 * Informative message.
@@ -153,8 +149,6 @@ public abstract class BaseEntity {
 		}
 	}
 
-	
-
 	/**
 	 * Assert Objects are Equal
 	 * 
@@ -171,10 +165,6 @@ public abstract class BaseEntity {
 			fatal(message);
 		}
 	}
-
-	
-
-	
 
 	/**
 	 * killing process by Image name
@@ -215,7 +205,6 @@ public abstract class BaseEntity {
 		browser = Browser.getInstance();
 		browser.windowMaximise();
 		stepNumber = 1;
-		
 	}
 
 	/**
@@ -223,7 +212,6 @@ public abstract class BaseEntity {
 	 */
 	@AfterClass
 	public void after() {
-		
 		if (browser.isBrowserAlive()) {
 			browser.exit();
 			checkAndKill();
@@ -233,21 +221,15 @@ public abstract class BaseEntity {
 	/**
 	 * Logging steps
 	 */
-	protected void LogStep() {
+	protected void logStep() {
 		logStep(stepNumber++);
 	}
 
 	/**
 	 * Logging steps with info
 	 */
-	protected void LogStep(final String info) {
+	protected void logStep(final String info) {
 		logStep(stepNumber++);
 		logger.info(String.format("----==[ %1$s ]==----", info));
 	}
-
-	
-
-	
-	
-
 }

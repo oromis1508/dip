@@ -1,40 +1,39 @@
 package forms;
 
-import forms.enums.ImageItem;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import webdriver.BaseForm;
+import webdriver.SikuliUtil;
 
 public class WorkField extends BaseForm {
 
-    private int waitForItem = 0;
 
     public WorkField() {
         super(By.id("view-floor"), "Work field");
     }
 
-    public boolean isItemPlaced(ImageItem item, int waitingTimeout) {
-        waitForItem = waitingTimeout;
-        boolean result = isItemPlaced(item);
-        waitForItem = 0;
-        return result;
-    }
-
-    public boolean isItemPlaced(ImageItem item) {
+    public boolean isItemPlaced(final String imageName) {
         try {
-            new Screen().find(item.toString()).wait(item.toString(), waitForItem);
+            WebDriverWait wait = new WebDriverWait(browser.getDriver(), waitingTimeout);
+            wait.until(webDriver -> {
+                try {
+                    return new Screen().find(SikuliUtil.getImagePattern(imageName));
+                } catch (FindFailed findFailed) {
+                    return false;
+                }
+            });
             return true;
         } catch (Exception findFailed) {
             return false;
         }
     }
 
-    public void clickItem(ImageItem item) {
+    public void clickItem(final String imageName) {
         Screen screen = new Screen();
         try {
-            screen.click(new Pattern(item.toString()));
+            screen.click(SikuliUtil.getImagePattern(imageName));
         } catch (FindFailed findFailed) {
             logger.error(String.format("Error of find image:\n %s", findFailed.getMessage()));
         }

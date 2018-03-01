@@ -56,7 +56,7 @@ public final class Logger {
 	 * Sets the new local
 	 * @param newLoc new Local manager
 	 */
-	public static void setNewLocalManager(final PropertiesResourceManager newLoc){
+	public static void setNewLocalManager(final PropertiesResourceManager newLoc) {
 		localManager = newLoc;
 	}
 
@@ -97,7 +97,7 @@ public final class Logger {
 
 	public void step(final int step, final String messageInfo) {
 		logDelimMsg(getLoc("loc.logger.step") + String.valueOf(step));
-		info(String.format("Step %s: %s",String.valueOf(step), messageInfo));
+		info(String.format("Step %s: %s", String.valueOf(step), messageInfo));
 	}
 
 	/**

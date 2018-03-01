@@ -27,7 +27,6 @@ public abstract class BaseForm extends BaseEntity {
 	 */
 	protected String name; // full name of form that outputted to log, for example, "Form 'Login'"
 
-	
 	/**
 	 * Contructor
 	 * @param locator Locator
@@ -101,9 +100,8 @@ public abstract class BaseForm extends BaseEntity {
 	}
 
 	public boolean isFormClosed() {
-		int waitForFormClosed = Integer.parseInt(getTestProperty("waitingTimeout"));
 		Label elem = new Label(titleLocator, title);
-		WebDriverWait wait = new WebDriverWait(Browser.getInstance().getDriver(), waitForFormClosed);
+		WebDriverWait wait = new WebDriverWait(Browser.getInstance().getDriver(), waitingTimeout);
 		try {
 			wait.until((driver) -> !elem.isPresent());
             return true;

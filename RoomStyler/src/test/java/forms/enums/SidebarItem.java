@@ -21,9 +21,9 @@ public enum SidebarItem {
         return text;
     }
 
-    public static SidebarItem getMenu(String menuName) {
+    public static SidebarItem getMenu(final String menuName) {
         for (SidebarItem item :values()) {
-            if(item.text.equals(menuName)) {
+            if (item.text.equals(menuName)) {
                 return item;
             }
         }

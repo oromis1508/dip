@@ -80,7 +80,7 @@ public abstract class BrowserFactory {
 				System.setProperty("webdriver.ie.driver", myFile.getAbsolutePath());
 				driver = new InternetExplorerDriver(cp);
 			// better to avoid
-			}else{
+			} else{
 				// now remote connection will be refused, so use selenium server instead
 				driver = new InternetExplorerDriver();
 			}

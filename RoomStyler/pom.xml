@@ -7,9 +7,6 @@
 	<name>RoomStyler</name>
 	<packaging>jar</packaging>
 	<version>1.2.9-SNAPSHOT</version>
-
-	
-
 	
 	<repositories>
 		  <repository>
@@ -183,7 +180,7 @@
  				<groupId>org.apache.maven.plugins</groupId> 
  				<artifactId>maven-site-plugin</artifactId> 
  				<version>3.0</version> 
- 				<configuration> 
+ 				<configuration>
  					<generateSitemap>true</generateSitemap> 
  				</configuration> 
  			</plugin> 

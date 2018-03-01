@@ -6,10 +6,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import webdriver.elements.Label;
-
 import javax.naming.NamingException;
 import java.util.concurrent.TimeUnit;
-
 import static webdriver.Logger.getLoc;
 
 /**
@@ -17,15 +15,9 @@ import static webdriver.Logger.getLoc;
  */
 public final class Browser {
 
-	
 	private static final long IMPLICITY_WAIT = 10;
 	private static final String DEFAULT_CONDITION_TIMEOUT = "defaultConditionTimeout";
 	private static final String DEFAULT_PAGE_LOAD_TIMEOUT = "defaultPageLoadTimeout";
-	
-//	private static final String URL_LOGIN_PAGE = "urlLoginPage";
-
-	
-	
 	
 	// имя файла с настройками Selenium
 	/**
@@ -38,23 +30,16 @@ public final class Browser {
 	private static final String BROWSER_BY_DEFAULT = "firefox";
 	private static final String BROWSER_PROP = "browser";
 
-	
-
 	// browsers
 	private static Browser instance;
 	private static RemoteWebDriver driver;
 	public static PropertiesResourceManager props;
 
 	// поля класса
-
 	private static String timeoutForPageLoad;
 	private static String timeoutForCondition;
 
-	
-
 	public static Browsers currentBrowser;
-	
-	
 
 	/**
 	 * Private constructor (singleton pattern)
@@ -134,15 +119,10 @@ public final class Browser {
 	 * init
 	 */
 	private static void initProperties() {
-
 		props = new PropertiesResourceManager(PROPERTIES_FILE);
 		timeoutForPageLoad = props.getProperty(DEFAULT_PAGE_LOAD_TIMEOUT);
 		timeoutForCondition = props.getProperty(DEFAULT_CONDITION_TIMEOUT);
-	
 
-	
-		
-	
 		if (Strings.isNullOrEmpty(props.getProperty(BROWSER_PROP))) {
 			// using System.getProperty
 			currentBrowser = Browsers.valueOf(System.getProperty(BROWSER_PROP, BROWSER_BY_DEFAULT).toUpperCase());
@@ -161,7 +141,7 @@ public final class Browser {
 		WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(getTimeoutForPageLoad()));
 
 		try {
-			wait.until((d) -> {{
+			wait.until((d) -> {
 					if (!(d instanceof JavascriptExecutor)) {
 						return true;
 					}
@@ -171,23 +151,12 @@ public final class Browser {
 						return true;
 					}
 					return false;
-				}
 			});
 		} catch (Exception e) {
 			Logger.getInstance().warn(getLoc("loc.browser.page.timeout"));
 		}
-		// Logger.getInstance().info("waitForPageToLoad ended");
 	}
 
-	
-
-	
-	
-
-	
-
-	
-	
 	/**
 	 * maximizes the window
 	 * <p>
@@ -197,9 +166,8 @@ public final class Browser {
 		try {
 			driver.executeScript("if (window.screen) {window.moveTo(0, 0);window.resizeTo(window.screen.availWidth,window.screen.availHeight);};");
 		} catch (Exception e) {
-			//A lot of browsers crash here
+            Logger.getInstance().warn("Error of maximize window");
 		}
-
 	}
 
 	/**
@@ -210,8 +178,6 @@ public final class Browser {
 		driver.navigate().to(url);
 	}
 
-	
-
 	/**
 	 * get RemoteWebDriver
 	 * @return driver
@@ -219,12 +185,6 @@ public final class Browser {
 	public RemoteWebDriver getDriver() {
 		return driver;
 	}
-
-	
-
-	
-	
-
 
 	/**
 	 * Clicks on element
@@ -235,8 +195,6 @@ public final class Browser {
 		new Label(selector).click();
 	}
 
-	
-	
 	/**
 	 * Gets current URL
 	 * @return current URL
@@ -245,9 +203,6 @@ public final class Browser {
 		return driver.getCurrentUrl();
 	}
 
-	
-
-	
 	/**
 	 * Browsers enumeration
 	 */
@@ -292,13 +247,4 @@ public final class Browser {
 			return value;
 		}
 	}
-
-	
-	
-	
-	
-
-	
-	
-	
 }

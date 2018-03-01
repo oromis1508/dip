@@ -35,9 +35,9 @@ public enum FurnishYourRoomItem {
         return text;
     }
 
-    public static FurnishYourRoomItem getMenu(String menuName) {
+    public static FurnishYourRoomItem getMenu(final String menuName) {
         for (FurnishYourRoomItem item :values()) {
-            if(item.name.equals(menuName)) {
+            if (item.name.equals(menuName)) {
                 return item;
             }
         }
