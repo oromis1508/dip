@@ -6,7 +6,7 @@ namespace demo.framework.Utils.Database
     {
         private static SqlConnection _sqlConnection;
 
-        public static void ConnectDatabase(string ip, string port, string dbName, string userId, string password)
+        public static SqlConnection ConnectDatabase(string ip, string port, string dbName, string userId, string password)
         {
             if (_sqlConnection == null)
             {
@@ -16,6 +16,8 @@ namespace demo.framework.Utils.Database
                                                    $"Password={password}");
                 _sqlConnection.Open();
             }
+
+            return _sqlConnection;
         }
 
         public static string[] GetResponse(DatabaseRequests request)

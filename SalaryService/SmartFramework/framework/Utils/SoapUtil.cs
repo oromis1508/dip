@@ -22,11 +22,11 @@ namespace demo.framework.Utils
             return request;
         }
 
-        public static XmlDocument SendMessage(string webServiceName, WebServiceMethod webServiceMethod)
+        public static XmlDocument SendMessage(WebServiceMethod webServiceMethod)
         {
             var soapMessage = GetSoapMessage(webServiceMethod);
 
-            var webRequest = (HttpWebRequest)WebRequest.Create(webServiceName);
+            var webRequest = (HttpWebRequest)WebRequest.Create(Configuration.GetWebServiceUri());
             webRequest.ContentType = "text/xml; charset=utf-8";
             webRequest.Method = "POST";
             webRequest.SendChunked = true;

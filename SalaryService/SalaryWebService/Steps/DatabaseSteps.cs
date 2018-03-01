@@ -8,7 +8,7 @@ using TechTalk.SpecFlow.Assist;
 namespace SalaryWebService.Steps
 {
     [Binding]
-    public class DatabaseSteps : BaseSalarySteps
+    public class DatabaseSteps : BeforeAfterTestRun
     {
         [When(@"I send request to the database to search with the parameters")]
         public void SendDatabaseRequest(Table table)
@@ -16,7 +16,7 @@ namespace SalaryWebService.Steps
             var databaseResponse =
                 DbUtil.GetResponse(DatabaseRequests.Select(new[] { table.Rows[0]["SeachFields"] },
                     table.Rows[0]["TableName"], new[] { table.Rows[0]["SeachCriteria"] }));
-            UpdateContextKey("Response", databaseResponse);
+            ScenarioContextUtil.UpdateContext("Response", databaseResponse);
         }
 
         [Then(@"The data of the database response match the employee with the data")]

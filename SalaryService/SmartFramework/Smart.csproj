@@ -74,6 +74,7 @@
     <Compile Include="framework\Utils\SalaryWebService\EmployeeAssert.cs" />
     <Compile Include="framework\Utils\SalaryWebService\WebServiceMethod.cs" />
     <Compile Include="framework\Utils\Logger.cs" />
+    <Compile Include="framework\Utils\ScenarioContextUtil.cs" />
     <Compile Include="framework\Utils\SoapUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,7 +10,7 @@ using TechTalk.SpecFlow.Assist;
 namespace SalaryWebService.Steps
 {
     [Binding]
-    public class CheckWebServiceResponseSteps : BaseSalarySteps
+    public class CheckWebServiceResponseSteps : BeforeAfterTestRun
     {
         [Then(@"The server sent the response '(.*)' in the tag '(.*)'")]
         public void CheckWebServiceResponseTag(string expectedTagValue, string expectedTagName)
@@ -19,7 +19,7 @@ namespace SalaryWebService.Steps
             var responseTag = responseXml?.GetElementsByTagName("soap:Body")[0].FirstChild.FirstChild;
 
             Asserts.AreEqual(expectedTagName, responseTag?.Name, $"Check on tag {expectedTagName} exist");
-            Asserts.AreEqual(expectedTagValue, responseTag.InnerText, "Check value response tag", true);
+            Asserts.AreEqual(expectedTagValue, responseTag?.InnerText, "Check value response tag", true);
         }
 
         [Then(@"The web service response tags named and placed as")]
@@ -33,7 +33,7 @@ namespace SalaryWebService.Steps
                 Asserts.AreEqual(table.Rows[i]["Tag"], responseInfo.ChildNodes[i].Name, $"Check sequence of the privateId search method response tags ({table.Rows[i]["Tag"]})", true);
                 values[table.Rows[i]["Tag"]] = responseInfo.ChildNodes[i].InnerText;
             }
-            UpdateContextKey("Response", values);
+            ScenarioContextUtil.UpdateContext("Response", values);
         }
 
         [Then(@"Data in the web service response match the employee with the data")]

@@ -8,7 +8,7 @@ using TechTalk.SpecFlow.Assist;
 namespace SalaryWebService.Steps
 {
     [Binding]
-    public class WebServiceFunctionsSteps : BaseSalarySteps
+    public class WebServiceFunctionsSteps : BeforeAfterTestRun
     {
         [Given(@"The employee created on the web service with the data")]
         public void CreateEmployeeOnWebService(Table table)
@@ -31,9 +31,9 @@ namespace SalaryWebService.Steps
                 DbUtil.GetResponse(DatabaseRequests.Delete(DBTable.Employees.Name, deleteCriteria));
             }
 
-            var responseXml = SoapUtil.SendMessage(WebServiceName, WebServiceMethod.AddEmployee(employee));
-            UpdateContextKey("Employee", employee);
-            UpdateContextKey("Response", responseXml);
+            var responseXml = SoapUtil.SendMessage(WebServiceMethod.AddEmployee(employee));
+            ScenarioContextUtil.UpdateContext("Employee", employee);
+            ScenarioContextUtil.UpdateContext("Response", responseXml);
         }
 
         [When(@"I send request to getting the employee salary to the web service")]
@@ -42,8 +42,8 @@ namespace SalaryWebService.Steps
             var salaryData = table.CreateInstance<SalaryData>();
             var employee = ScenarioContext.Current.Get<Employee>("Employee");
 
-            var responseXml = SoapUtil.SendMessage(WebServiceName, WebServiceMethod.GetEmployeeSalary(employee, salaryData));
-            UpdateContextKey("Response", responseXml);
+            var responseXml = SoapUtil.SendMessage(WebServiceMethod.GetEmployeeSalary(employee, salaryData));
+            ScenarioContextUtil.UpdateContext("Response", responseXml);
         }
 
         [When(@"I search the employee on the web service by '(PrivateId|Experiense|LastName)'")]
@@ -54,19 +54,16 @@ namespace SalaryWebService.Steps
             switch (searchCriteria)
             {
                 case "PrivateId":
-                    var responsePrivateId = SoapUtil.SendMessage(WebServiceName,
-                        WebServiceMethod.GetEmployeeByPrivateId(employee));
-                    UpdateContextKey("Response", responsePrivateId);
+                    var responsePrivateId = SoapUtil.SendMessage(WebServiceMethod.GetEmployeeByPrivateId(employee));
+                    ScenarioContextUtil.UpdateContext("Response", responsePrivateId);
                     break;
                 case "Experiense":
-                    var responseExperiense = SoapUtil.SendMessage(WebServiceName,
-                        WebServiceMethod.GetEmployeeByExperiense(employee));
-                    UpdateContextKey("Response", responseExperiense);
+                    var responseExperiense = SoapUtil.SendMessage(WebServiceMethod.GetEmployeeByExperiense(employee));
+                    ScenarioContextUtil.UpdateContext("Response", responseExperiense);
                     break;
                 case "LastName":
-                    var responseLastName = SoapUtil.SendMessage(WebServiceName,
-                        WebServiceMethod.GetEmployeeByLastName(employee));
-                    UpdateContextKey("Response", responseLastName);
+                    var responseLastName = SoapUtil.SendMessage(WebServiceMethod.GetEmployeeByLastName(employee));
+                    ScenarioContextUtil.UpdateContext("Response", responseLastName);
                     break;
             }
         }
