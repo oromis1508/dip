@@ -4,7 +4,6 @@ import forms.enums.FurnishYourRoomItem;
 import forms.enums.SceneInfoItem;
 import forms.enums.SidebarItem;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import webdriver.BaseForm;
@@ -52,22 +51,6 @@ public class SideBar extends BaseForm {
             new Screen().dragDrop(SikuliUtil.getImagePattern(dragImageName), SikuliUtil.getImagePattern(dropImageName));
         } catch (FindFailed findFailed) {
             logger.error(String.format("Error of find image:\n %s", findFailed.getMessage()));
-        }
-    }
-
-    public boolean isItemExist(final String imageName) {
-        try {
-            WebDriverWait wait = new WebDriverWait(browser.getDriver(), waitingTimeout);
-            wait.until(webDriver -> {
-                try {
-                    return new Screen().find(SikuliUtil.getImagePattern(imageName));
-                } catch (FindFailed findFailed) {
-                    return false;
-                }
-            });
-            return true;
-        } catch (Exception findFailed) {
-            return false;
         }
     }
 }

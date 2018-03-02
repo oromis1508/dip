@@ -12,7 +12,7 @@ public class SideBarSteps {
 
     @Then("^The image on the sidebar is same with the image '(.*)'$")
     public void checkImageOnSideBar(String imageName) {
-        Assert.assertTrue(new SideBar().isItemExist(imageName), "The image displayed in the description of the selected item");
+        Assert.assertTrue(new SideBar().isSikuliItemExist(imageName), "The image displayed in the description of the selected item");
     }
 
     @When("^I click the button '(.*)' on sidebar$")
@@ -40,7 +40,7 @@ public class SideBarSteps {
 
     @Then("^The sidebar not contains the item '(.*)'$")
     public void checkImageOnSideBarNotExist(String imageName) {
-        Assert.assertFalse(new SideBar().isItemExist(imageName), "The image not displayed in the description of the selected item");
+        Assert.assertFalse(new SideBar().isSikuliItemExist(imageName), "The image not displayed in the description of the selected item");
     }
 
     @Then("^The scene information contains '(.*)' in the all fields$")

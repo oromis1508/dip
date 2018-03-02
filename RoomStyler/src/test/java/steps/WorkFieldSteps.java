@@ -14,12 +14,12 @@ public class WorkFieldSteps {
 
     @Then("^The work field is not contains the item '(.*)'$")
     public void checkOnFieldEmpty(String imageName) {
-        Assert.assertFalse(new WorkField().isItemPlaced(imageName), "The placed item deleted from the work field");
+        Assert.assertFalse(new WorkField().isSikuliItemExist(imageName), "The placed item deleted from the work field");
     }
 
     @Then("^The item '(.*)' is displayed correctly on the work field$")
     public void checkItemExist(String imageName) {
-        Assert.assertTrue(new WorkField().isItemPlaced(imageName), "The item correctly displayed on the work field");
+        Assert.assertTrue(new WorkField().isSikuliItemExist(imageName), "The item correctly displayed on the work field");
     }
 
     @When("^I click the item '(.*)' on the work field$")

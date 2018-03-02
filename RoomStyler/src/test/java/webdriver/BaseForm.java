@@ -2,6 +2,8 @@ package webdriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Screen;
 import org.testng.Assert;
 import webdriver.elements.Label;
 
@@ -109,4 +111,21 @@ public abstract class BaseForm extends BaseEntity {
 		    return false;
         }
 	}
+
+	public boolean isSikuliItemExist(final String imageName) {
+		try {
+			WebDriverWait wait = new WebDriverWait(browser.getDriver(), waitingTimeout);
+			wait.until(webDriver -> {
+				try {
+					return new Screen().find(SikuliUtil.getImagePattern(imageName));
+				} catch (FindFailed findFailed) {
+					return false;
+				}
+			});
+			return true;
+		} catch (Exception findFailed) {
+			return false;
+		}
+	}
+
 }
