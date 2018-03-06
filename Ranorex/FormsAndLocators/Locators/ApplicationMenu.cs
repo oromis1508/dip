@@ -3,9 +3,12 @@ using RxFramework.Elements;
 
 namespace FormsAndLocators
 {
-    public partial class MainForm
+    public partial class ApplicationMenu
     {
-        private Text _resultText = new Text("/winapp[@packagename='Microsoft.WindowsCalculator']/text[@automationid='CalculatorResults']", "result text");
+        private readonly MenuBar _applicationMenuBar = new MenuBar("/form[@processname='notepad++']/menubar[@accessiblename='Application']", "Application menu");
+
+        private readonly string contextMenuXpath = "/contextmenu[@accessiblename='{0}']";
+        /*
         private string _buttonLocatorPattern = "/winapp[@packagename='Microsoft.WindowsCalculator']/?/?/button[@automationid='{0}']";
         private Dictionary<string, string> _buttonsAndLocators = new Dictionary<string, string>
         {
@@ -23,5 +26,6 @@ namespace FormsAndLocators
             {"-","minusButton"},
             {"=","equalButton"},
         };
+*/
     }
 }

@@ -33,8 +33,8 @@ namespace RxFramework
 
         protected void StartApplication(string app)
         {
-            var calc = ConfigurationManager.AppSettings[app];
-            Host.Local.RunApplication(calc);
+            var appName = ConfigurationManager.AppSettings[app];
+            Host.Local.RunApplication(appName);
             _startedApps.Add(app);
             Logger.Instance.Info($"Application {app} started");
         }

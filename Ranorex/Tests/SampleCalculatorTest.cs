@@ -1,6 +1,7 @@
 ﻿using FormsAndLocators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RxFramework;
+using RxFramework.Elements;
 using Assert = RxFramework.Assert;
 
 namespace Tests
@@ -13,8 +14,9 @@ namespace Tests
         [TestInitialize]
         public void Init()
         {
-            _buttonsToPress = TestContext.DataRow["Press"].ToString();
+            _buttonsToPress = TestContext.DataRow["Input"].ToString();
             _expectedValue = TestContext.DataRow["ExpectedValue"].ToString();
+
         }
 
         [TestMethod]
@@ -23,24 +25,13 @@ namespace Tests
         public override void RunTest()
         {
             LogStep(1, "Start application");
-            StartApplication("Calculator");
+            StartApplication("AppName");
 
-            LogStep(2, $"Press {_buttonsToPress}");
-            var mainForm = new MainForm();
-            mainForm.PressButtons(_buttonsToPress);
+            LogStep(2, $"Press menu File - New");
+            var applicationMenu = new ApplicationMenu();
+            applicationMenu.OpenMenu("File - New", " - ");
 
-            LogStep(3, $"Assert is {_expectedValue}");
-            //soft assert example
-            Assert.SoftAreEqual(_expectedValue, mainForm.GetResult(), "SA actual values is not as expected");
-
-            //assert batch example
-            Assert.Batch(
-                () => Assert.AreEqual(_expectedValue, mainForm.GetResult(), "AB1 actual values is not as expected"),
-                () => Assert.AreEqual(_expectedValue, mainForm.GetResult(), "AB2 actual values is not as expected")
-            );
-
-            //assert example
-            Assert.AreEqual(_expectedValue, mainForm.GetResult(), "A actual values is not as expected");
+            LogStep(3, $"Input text");
         }
     }
 }

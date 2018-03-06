@@ -48,8 +48,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\MainForm.cs" />
-    <Compile Include="Locators\MainForm.cs" />
+    <Compile Include="Forms\ApplicationMenu.cs" />
+    <Compile Include="Forms\TextEditor.cs" />
+    <Compile Include="Locators\ApplicationMenu.cs" />
+    <Compile Include="Locators\TextEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

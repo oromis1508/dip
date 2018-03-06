@@ -48,78 +48,93 @@
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="Ranorex.Core, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL" />
-    <Reference Include="Ranorex.Libs.Base, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+    <Reference Include="Ranorex.Common, Version=1.0.3.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Libs.Base.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Core, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Core.WinApi, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Core.WinApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.MozillaMsgHost, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.MozillaMsgHost.exe</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.ChromeMsgHost, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.ChromeMsgHost.exe</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.ChromeWeb, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.ChromeWeb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.ChromeWeb.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Flex, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Flex.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Flex.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Java, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Java.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Java.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Mobile, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Mobile.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Mobile.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.MozillaWeb, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.MozillaWeb.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.MozillaWeb.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Msaa, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Msaa.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Msaa.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Office, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Office.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Office.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Qt, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Qt.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Qt.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.RawText, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.RawText.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.RawText.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Sap, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Sap.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Sap.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Uia, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Uia.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Uia.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Web, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Web.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Web.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Win32, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Win32.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Win32.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.WinForms, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.WinForms.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.WinFormsProxy, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.WinFormsProxy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.WinFormsProxy.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Wpf.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Ranorex.Plugin.WpfProxy, Version=6.1.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.WpfProxy.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Ranorex 6.1\Bin\Ranorex.Plugin.WpfProxy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -131,6 +146,8 @@
     <Compile Include="BaseTest.cs" />
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Elements\Button.cs" />
+    <Compile Include="Elements\ContextMenu.cs" />
+    <Compile Include="Elements\MenuBar.cs" />
     <Compile Include="Elements\Text.cs" />
     <Compile Include="ExceptionUtils.cs" />
     <Compile Include="HotKeys.cs" />
@@ -138,7 +155,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="log4net.xml" />
