@@ -6,16 +6,6 @@
         {
         }
 
-        public void Click()
-        {
-            GetElement<Ranorex.Button>().Click();
-            Logger.Instance.Info($"Click on element {Name} with locator {Locator}");
-        }
-
-        public void Press()
-        {
-            GetElement<Ranorex.Button>().Press();
-            Logger.Instance.Info($"Click on element {Name} with locator {Locator}");
-        }
+        public void Click() => Click<Ranorex.Button>();
     }
 }

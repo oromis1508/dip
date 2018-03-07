@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ranorex;
+using RxFramework.Utils;
+using Assert = RxFramework.Utils.Assert;
 
-namespace RxFramework
+namespace RxFramework.BaseEntities
 {
     [TestClass]
     public abstract class BaseTest
     {
         public virtual TestContext TestContext { get; set; }
-        private List<string> _startedApps = new List<string>();
+        private readonly List<string> _startedApps = new List<string>();
+
         [TestInitialize]
         public void Initialize()
         {
@@ -39,14 +41,12 @@ namespace RxFramework
             Logger.Instance.Info($"Application {app} started");
         }
 
-        protected void AddAppToKillAfterTest(string appName)
-        {
-            _startedApps.Add(appName);
-        }
+        protected void AddAppToKillAfterTest(string appName) => _startedApps.Add(appName);
 
         protected void KillAllStartedProcesses()
         {
             foreach (var startedApp in _startedApps)
+            {
                 try
                 {
                     var proc = Process.GetProcessesByName(startedApp);
@@ -56,11 +56,9 @@ namespace RxFramework
                 {
                     Logger.Instance.Info($"Not all proccesses killed. The error is {e}");
                 }
+            }
         }
 
-        protected void LogStep(int number, string step)
-        {
-            Logger.Instance.Info($"--== step {number}. {step}==--");
-        }
+        protected void LogStep(int number, string step) => Logger.Instance.Info($"--== step {number}. {step}==--");
     }
 }

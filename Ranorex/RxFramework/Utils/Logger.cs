@@ -1,7 +1,7 @@
 ﻿using log4net;
 using log4net.Config;
 
-namespace RxFramework
+namespace RxFramework.Utils
 {
     public class Logger
     {
@@ -16,20 +16,10 @@ namespace RxFramework
 
         public static Logger Instance => _instance ?? (_instance = new Logger());
 
-        public void Info(string message)
-        {
-            _log.Info(message);
-        }
+        public void Info(string message) => _log.Info(message);
 
+        public void Debug(string message) => _log.Debug(message);
 
-        public void Debug(string message)
-        {
-            _log.Debug(message);
-        }
-
-        public void Warn(string message)
-        {
-            _log.Warn(message);
-        }
+        public void Warn(string message) => _log.Warn(message);
     }
 }

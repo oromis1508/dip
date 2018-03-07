@@ -4,6 +4,13 @@ namespace FormsAndLocators
 {
     public partial class TextEditor
     {
-        Button btn = new Button("/form[@title='new 2 - Notepad++']/element[@instance='0']", "textEditor");
+        public TextEditor() : base("/form[@processname='notepad++']", "Notepad text editor")
+        {
+            _textEditor = new Scintilla($"{FormLocator}/element[@class='Scintilla']", FormName);
+            _activeTab = new TabPage($"{FormLocator}//tabpage[selected='true']", "Active tab with editor");
+        }
+
+        private readonly Scintilla _textEditor;
+        private readonly TabPage _activeTab;
     }
 }

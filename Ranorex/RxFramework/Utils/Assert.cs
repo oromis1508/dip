@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RxFramework
+namespace RxFramework.Utils
 {
     public static class Assert
     {
         private static List<Exception> _exceptions = new List<Exception>();
 
-        public static void AreEqual(Object expected, Object actual, string condition)
+        public static void AreEqual(object expected, object actual, string condition)
         {
             if (expected.Equals(actual))
             {
@@ -21,6 +21,45 @@ namespace RxFramework
             }
         }
 
+        public static void AreNotEqual(object expected, object actual, string condition)
+        {
+            if (!expected.Equals(actual))
+            {
+                Logger.Instance.Info($"Assertion :: {condition} :: PASSED");
+            }
+            else
+            {
+                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(expected, actual,
+                    $"Assertion ::{condition}:: FALSE");
+            }
+        }
+
+        public static void IsTrue(bool expression, string condition)
+        {
+            if (expression)
+            {
+                Logger.Instance.Info($"Assertion :: {condition} :: PASSED");
+            }
+            else
+            {
+                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(expression,
+                    $"Assertion ::{condition}:: FALSE");
+            }
+        }
+
+        public static void IsFalse(bool expression, string condition)
+        {
+            if (!expression)
+            {
+                Logger.Instance.Info($"Assertion :: {condition} :: PASSED");
+            }
+            else
+            {
+                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(expression,
+                    $"Assertion ::{condition}:: FALSE");
+            }
+        }
+
         public static void Batch(params Action[] assertMethods)
         {
             var exceptions = ExceptionUtils.Catch(assertMethods);
@@ -29,19 +68,17 @@ namespace RxFramework
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.Fail(Environment.NewLine + message);
         }
 
-        public static void SoftAreEqual(Object expected, Object actual, string condition)
+        public static void SoftAreEqual(object expected, object actual, string condition)
         {
             try
             {
                 Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, actual,
                     $"Assertion :: {condition} :: FALSE");
-
             }
             catch (Exception e)
             {
                 _exceptions.Add(e);
             }
-
         }
 
         public static void SoftAssertBegin()

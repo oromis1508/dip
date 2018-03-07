@@ -1,4 +1,4 @@
-﻿namespace RxFramework
+﻿namespace RxFramework.Utils
 {
     public enum HotKeys
     {

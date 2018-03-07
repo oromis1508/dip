@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RxFramework
+namespace RxFramework.Utils
 {
     public static class ExceptionUtils
     {

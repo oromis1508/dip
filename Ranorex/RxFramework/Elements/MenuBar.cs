@@ -1,6 +1,4 @@
-﻿using Ranorex;
-
-namespace RxFramework.Elements
+﻿namespace RxFramework.Elements
 {
     public class MenuBar : BaseElement
     {
@@ -8,9 +6,6 @@ namespace RxFramework.Elements
         {
         }
 
-        public void ClickMenuItem(string subMenu)
-        {
-            GetElement<Ranorex.MenuBar>()[subMenu].Click();
-        }
+        public void ClickMenuItem(string subMenu) => GetElement<Ranorex.MenuBar>()[subMenu].Click();
     }
 }

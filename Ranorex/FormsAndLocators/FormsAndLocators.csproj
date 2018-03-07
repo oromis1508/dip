@@ -49,8 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\ApplicationMenu.cs" />
+    <Compile Include="Forms\FileSave.cs" />
+    <Compile Include="Forms\IEWindow.cs" />
     <Compile Include="Forms\TextEditor.cs" />
     <Compile Include="Locators\ApplicationMenu.cs" />
+    <Compile Include="Locators\FileSave.cs" />
+    <Compile Include="Locators\IEWindow.cs" />
     <Compile Include="Locators\TextEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
