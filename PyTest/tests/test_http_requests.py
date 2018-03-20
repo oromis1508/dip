@@ -1,6 +1,5 @@
 import pytest
-#request_type, url, headers = None, params = None, body = None
-from framework.utils.HttpUtil import HttpUtil
+from framework.interface_drivers.HttpUtil import HttpUtil
 
 
 @pytest.fixture(scope="function",
