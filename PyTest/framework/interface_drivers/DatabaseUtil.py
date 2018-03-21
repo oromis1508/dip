@@ -1,8 +1,11 @@
 import sqlite3
 
+import os
+
+
 class DatabaseUtil:
 
-    conn = sqlite3.Connection
+    conn = None
 
     @staticmethod
     def __dict_factory(cursor, row):
@@ -13,14 +16,16 @@ class DatabaseUtil:
 
     @staticmethod
     def connect_database(database_name):
-        DatabaseUtil.conn = sqlite3.connect(database_name)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(base_dir, '../..', database_name)
+        DatabaseUtil.conn = sqlite3.connect(db_path)
         DatabaseUtil.conn.row_factory = DatabaseUtil.__dict_factory
 
     @staticmethod
     def send_request(request):
         cursor = DatabaseUtil.conn.cursor()
         cursor.execute(request)
-        return cursor.fetchall()
+        return cursor.fetchone()
 
     @staticmethod
     def close_connection():

@@ -9,14 +9,10 @@ class DateTimeUtil :
             year = date.year + shift_value
             return datetime.datetime(year, date.month, date.day, date.hour, date.minute, date.second)
         elif type_lower == 'month':
-            month_shift = shift_value
-            years_shift = 0
+            years_shift = (date.month + shift_value) // 12
+            month_shifted = (date.month + shift_value) % 12
 
-            if month_shift > 12:
-                years_shift = month_shift // 12
-                month_shift = month_shift % 12
-
-            return datetime.datetime(date.year + years_shift, date.month + month_shift, date.day, date.hour, date.minute, date.second)
+            return datetime.datetime(date.year + years_shift, month_shifted, date.day, date.hour, date.minute, date.second)
         elif type_lower == 'day':
             return date + datetime.timedelta(days=shift_value)
         elif type_lower == 'second':
@@ -30,8 +26,8 @@ class DateTimeUtil :
         date_difference = abs(date_one - date_two)
 
         seconds = date_difference.seconds % 60
-        minutes = date_difference.minutes % 60
-        hours = date_difference.hours % 24
+        minutes = (date_difference.seconds // 60) % 60
+        hours = (date_difference.seconds // (60*60)) % 24
         days = date_difference.days % 30
         months = date_difference.days // 30
         years = date_difference.days // 365

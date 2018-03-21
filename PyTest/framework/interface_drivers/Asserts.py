@@ -1,8 +1,9 @@
-import logging
+from framework.interface_drivers.Logger import Logger
+
 
 class Asserts:
 
-    assert_stack = []
+    assert_stack = [0]
 
     @staticmethod
     def soft_assert(expected_result, actual_result):
@@ -13,11 +14,11 @@ class Asserts:
 
     @staticmethod
     def assert_all():
-        if len(Asserts.assert_stack) > 0:
+        if len(Asserts.assert_stack) > 0 and Asserts.assert_stack[0]:
             for assert_fail in Asserts.assert_stack:
-                logging.error(assert_fail)
+                Logger.add_log(log_file_name=Asserts.__class__.__name__, message='No failed asserts found', log_type=logging.warning(assert_fail))
             raise AssertionError
         else:
-            logging.info('No failed asserts found')
+            Logger.add_log(log_file_name=Asserts.__class__.__name__, message='No failed asserts found')
 
 

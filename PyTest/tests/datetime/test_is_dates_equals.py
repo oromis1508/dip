@@ -5,8 +5,9 @@ from framework.support.DateTimeUtil import DateTimeUtil
 
 @pytest.fixture(scope="function",
                 params=[(datetime.datetime(1990, 10, 22, 8, 44, 59), datetime.datetime(1990, 10, 22, 8, 44, 59), 0, 'second', True),
-                        (datetime.datetime(1990, 9, 30, 8, 44, 59), datetime.datetime(1990, 10, 31, 8, 44, 59), 32, 'day', True),
-                        (datetime.datetime(1990, 9, 30, 8, 44, 59), datetime.datetime(1990, 10, 31, 8, 44, 59), 31, 'day', False)
+                        (datetime.datetime(1990, 9, 30, 8, 44, 59), datetime.datetime(1990, 10, 21, 8, 44, 59), 22, 'day', True),
+                        (datetime.datetime(1990, 9, 30, 8, 44, 59), datetime.datetime(1990, 10, 21, 8, 44, 59), 21, 'day', True),
+                        (datetime.datetime(1990, 9, 30, 8, 44, 59), datetime.datetime(1990, 10, 21, 8, 44, 59), 20, 'day', False)
                         ])
 def param_equal(request):
     return request.param
