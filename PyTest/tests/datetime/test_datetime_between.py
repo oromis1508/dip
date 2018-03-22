@@ -1,5 +1,7 @@
 import datetime
 import pytest
+
+from framework.interface_drivers.Logger import Logger
 from framework.support.DateTimeUtil import DateTimeUtil
 
 
@@ -14,4 +16,10 @@ def param_between(request):
 def test_is_datetime_between(param_between):
     date, lower_boundary, upper_boundary, expected_result = param_between
     actual_result = DateTimeUtil.is_date_between(date, lower_boundary, upper_boundary)
-    assert expected_result == actual_result
+    try:
+        assert expected_result == actual_result
+        Logger.add_log(message='test datetime between success with params: {}'.format(str(param_between)))
+    except AssertionError:
+        Logger.add_log(message='test datetime between failed with params: {}'.format(str(param_between)))
+        raise
+

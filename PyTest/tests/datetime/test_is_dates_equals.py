@@ -1,5 +1,7 @@
 import datetime
 import pytest
+
+from framework.interface_drivers.Logger import Logger
 from framework.support.DateTimeUtil import DateTimeUtil
 
 
@@ -15,4 +17,9 @@ def param_equal(request):
 def test_date_equals(param_equal):
     date_one, date_two, variation_value, variation_type, expected_result = param_equal
     actual_result = DateTimeUtil.equal_dates(date_one, date_two, variation_value, variation_type)
-    assert expected_result == actual_result
+    try:
+        assert expected_result == actual_result
+        Logger.add_log(message='test datetime equal success with params: {}'.format(str(param_equal)))
+    except AssertionError:
+        Logger.add_log(message='test datetime equal failed with params: {}'.format(str(param_equal)))
+        raise

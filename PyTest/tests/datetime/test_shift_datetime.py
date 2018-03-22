@@ -1,6 +1,7 @@
 import datetime
 import pytest
 
+from framework.interface_drivers.Logger import Logger
 from framework.support.DateTimeUtil import DateTimeUtil
 
 class TestCase:
@@ -18,5 +19,10 @@ class TestCase:
     def test_shift_time(self, param_shift):
         date, shift_value, shift_type, expected_result = param_shift
         actual_result = DateTimeUtil.shift_time(date, shift_value, shift_type)
-        assert expected_result == actual_result
+        try:
+            assert expected_result == actual_result
+            Logger.add_log(message='test shift datetime success with params: {}'.format(str(param_shift)))
+        except AssertionError:
+            Logger.add_log(message='test shift datetime failed with params: {}'.format(str(param_shift)))
+            raise
 

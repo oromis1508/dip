@@ -16,9 +16,7 @@ class Asserts:
     def assert_all():
         if len(Asserts.assert_stack) > 0 and Asserts.assert_stack[0]:
             for assert_fail in Asserts.assert_stack:
-                Logger.add_log(log_file_name=Asserts.__class__.__name__, message='No failed asserts found', log_type=logging.warning(assert_fail))
+                Logger.add_log(log_file_name=Asserts.__class__.__name__, message=assert_fail, log_type='warn')
             raise AssertionError
         else:
             Logger.add_log(log_file_name=Asserts.__class__.__name__, message='No failed asserts found')
-
-

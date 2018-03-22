@@ -2,6 +2,8 @@ import sqlite3
 
 import os
 
+from framework.interface_drivers.Logger import Logger
+
 
 class DatabaseUtil:
 
@@ -20,16 +22,19 @@ class DatabaseUtil:
         db_path = os.path.join(base_dir, '../..', database_name)
         DatabaseUtil.conn = sqlite3.connect(db_path)
         DatabaseUtil.conn.row_factory = DatabaseUtil.__dict_factory
+        Logger.add_log(message='connected to {} database'.format(database_name))
 
     @staticmethod
     def send_request(request):
         cursor = DatabaseUtil.conn.cursor()
         cursor.execute(request)
+        Logger.add_log(message='{} request sent to database'.format(request))
         return cursor.fetchone()
 
     @staticmethod
     def close_connection():
         DatabaseUtil.conn.close()
+        Logger.add_log(message='database connect closed')
 
     @staticmethod
     def select_request(table_name, fields, condition):

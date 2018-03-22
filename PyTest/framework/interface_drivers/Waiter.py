@@ -1,5 +1,8 @@
 import time
 
+from framework.interface_drivers.Logger import Logger
+
+
 class Waiter:
 
     @staticmethod
@@ -10,3 +13,5 @@ class Waiter:
             result = some_function(args)
             waiting_time += period
             time.sleep(period)
+        if result != return_value:
+            Logger.add_log(message='Timeout for method {} waiting is over'.format(some_function.__name__))
