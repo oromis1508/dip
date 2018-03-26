@@ -1,45 +1,39 @@
+import json
+
+import os
 from pip._vendor import requests
 
-class HttpBinMethods:
 
-    response = None
-    service_uri = 'http://httpbin.org/'
+class HttpBinMethods:
 
 
     """Call base auth method on the web service
     :param user: username for authorization
     :param password: password for authorization
-    :returns: the username in the response when authorization is success or unauthorized
+    :returns: the response of the web service method
     """
     def authorization_by_method_base_auth(self, user, password):
-        self.response = requests.get('{}basic-auth/user/passwd'.format(self.service_uri), auth=(user, password))
-        if  self.get_status_code() == 401:
-            return 'unauthorized'
-        else:
-            return self.response.json()['user']
-
+        return requests.get('{service_url}basic-auth/user/passwd'
+                            .format(service_url=get_setting(key='service_uri')), auth=(user, password))
 
     """Call method get on the web service with parameter
-    :param header_name: key of the sent parameter
-    :param header_value: value of the sent parameter
-    :returns: the value of the sent parameter in the response
+    :param params: parameters of the get method of the web service
+    :returns: the response of the web service method
     """
-    def use_method_get_with_args(self, header_name, header_value):
-        self.response = requests.get('{}get?{}={}'.format(self.service_uri, header_name, header_value))
-        return self.response.json()['args'][header_name]
-
+    def use_method_get_with_args(self, params):
+        return requests.get('{service_url}get'
+                            .format(service_url=get_setting(key='service_uri')), params=params)
 
     """Call method stream on the web service
     :param stream_size: number of streams
-    :returns: the number of strings in the response
+    :returns: the response of the web service method
     """
     def use_method_stream_to_create_streams(self, stream_size):
-        self.response = requests.get('{}stream/{}'.format(self.service_uri, stream_size))
-        return self.response.text.count('\n')
+        return requests.get('{service_url}stream/{stream_size}'
+                            .format(service_url=get_setting(key='service_uri'), stream_size=stream_size))
 
-
-    """Get response status code
-    :returns: response status code
-    """
-    def get_status_code(self):
-        return self.response.status_code
+def get_setting(key):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    settings_path = os.path.join(base_dir, '../resources/configuration.json')
+    json_data = json.load(open(settings_path))
+    return json_data[key]

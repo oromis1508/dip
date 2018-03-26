@@ -1,20 +1,21 @@
 *** Settings ***
-Resource  ../Resources/Keywords.robot
+Resource  ../resources/Keywords.robot
 
 *** Test Cases ***
-Test stream method
-    ${number of strings}  use method stream to create streams  ${number_of_streams}
-    Should be equal  ${number of strings}  ${number_of_streams}
-        Check response code  ${ok_status_code}
+Test Stream Method
+    ${response}=  Use Method Stream To Create Streams  ${number_of_streams}
+    Should Be Equal  ${response.text.count('\n')}  ${number_of_streams}  Check the number of strings in the response
+    Should Be Equal  ${response.status_code}  ${ok_status_code}  Check the web service method of creating streams status code
 
-Test get method with arguments
-    ${value of arg}  use method get with args  ${parameter name}  ${parameter value}
-    Should be equal  ${value of arg}  ${parameter value}
-        Check response code  ${ok_status_code}
+Test Get Method With Arguments
+    ${params}=  Create Dictionary  ${parameter name}=${parameter value}
+    ${response}=  Use Method Get With Args   params=${params}
+    Should Be Equal  ${response.json()['args']}   ${params}  Check parameters of the response of the get web service method
+    Should Be Equal  ${response.status_code}  ${ok_status_code}  Check status code of the get method of the web service
 
-Login into the service
-    [Template]  Login into the service
-    #user       #password       #expected user      #status code
-    user        passwd          user                ${ok_status_code}
-    unvalid     unvalid         unauthorized        ${unauthorized_status_code}
+Login Into The Service
+    [Template]  Login Into The Service
+    #user       #password      #status code
+    user        passwd         ${ok_status_code}
+    unvalid     unvalid        ${unauthorized_status_code}
 
