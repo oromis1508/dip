@@ -16,11 +16,12 @@ def param_lists(request):
 
 def test_list_compare(param_lists):
     value_one, value_two, type_for_equal, expected_result = param_lists
-    actual_result = ListUtil.equals(value_one, value_two, type_for_equal)
-
+    actual_result = ListUtil.equals(list_one=value_one,
+                                    list_two=value_two,
+                                    type_for_equal=type_for_equal)
     try:
         assert expected_result == len(actual_result)
-        Logger.add_log(message='list compare success with params: {}'.format(str(param_lists)))
+        Logger.add_log(message='list compare success with params: {param_lists}'.format(param_lists=str(param_lists)))
     except AssertionError:
-        Logger.add_log(message='list compare failed with params: {}'.format(str(param_lists)))
+        Logger.add_log(message='list compare failed with params: {param_lists}'.format(param_lists=str(param_lists)))
         raise

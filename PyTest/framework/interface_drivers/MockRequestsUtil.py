@@ -1,5 +1,6 @@
 class MockRequestsUtil:
 
+
     @staticmethod
     def mocked_requests(*args, **kwargs):
         class MockResponse:
@@ -23,4 +24,8 @@ class MockRequestsUtil:
         if 'body' in kwargs:
             body = kwargs['body']
 
-        return MockResponse(kwargs['url'], headers, params, status_code, body)
+        return MockResponse(url=kwargs['url'],
+                            headers=headers,
+                            params=params,
+                            status_code=status_code,
+                            body=body)

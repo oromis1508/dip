@@ -16,10 +16,13 @@ def param_equal(request):
 
 def test_date_equals(param_equal):
     date_one, date_two, variation_value, variation_type, expected_result = param_equal
-    actual_result = DateTimeUtil.equal_dates(date_one, date_two, variation_value, variation_type)
+    actual_result = DateTimeUtil.equal_dates(date_one=date_one,
+                                             date_two=date_two,
+                                             variation_value=variation_value,
+                                             variation_type=variation_type)
     try:
         assert expected_result == actual_result
-        Logger.add_log(message='test datetime equal success with params: {}'.format(str(param_equal)))
+        Logger.add_log(message='test datetime equal success with params: {param_equal}'.format(param_equal=str(param_equal)))
     except AssertionError:
-        Logger.add_log(message='test datetime equal failed with params: {}'.format(str(param_equal)))
+        Logger.add_log(message='test datetime equal failed with params: {param_equal}'.format(param_equal=str(param_equal)))
         raise

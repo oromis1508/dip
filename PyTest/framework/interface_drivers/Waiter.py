@@ -5,6 +5,7 @@ from framework.interface_drivers.Logger import Logger
 
 class Waiter:
 
+
     @staticmethod
     def wait_for_result(some_function, args, return_value = not None, timeout=60, period=5):
         result = None
