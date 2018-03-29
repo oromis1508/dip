@@ -1,0 +1,39 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "items": {
+    "$id": "http://example.com/example.json/items",
+    "type": "object",
+    "properties": {
+      "Cur_ID": {
+        "$id": "http://example.com/example.json/items/properties/Cur_ID",
+        "type": "integer",
+        "title": "The Cur_id Schema ",
+        "default": 0,
+        "examples": [
+          108
+        ]
+      },
+      "Date": {
+        "$id": "http://example.com/example.json/items/properties/Date",
+        "type": "string",
+        "title": "The Date Schema ",
+        "default": "",
+        "examples": [
+          "2000-08-15T00:00:00"
+        ]
+      },
+      "Cur_OfficialRate": {
+        "$id": "http://example.com/example.json/items/properties/Cur_OfficialRate",
+        "type": "number",
+        "title": "The Cur_officialrate Schema ",
+        "default": 0,
+        "examples": [
+          191.5800018310547
+        ]
+      }
+    }
+  }
+}
