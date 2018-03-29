@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Demo Test Plan" verbose="1">
+    <test name="Functional Tests" preserve-order="true">
+        <parameter name = "appActivity" value="com.zdv.secretcloset.MainActivity"/>
+        <parameter name = "reinstall" value="false"/>
+        <classes>
+            <class name="secretCloset.DemoTest" />
+        </classes>
+    </test>
+</suite>
