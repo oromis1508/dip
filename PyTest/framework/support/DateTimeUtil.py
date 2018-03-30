@@ -1,10 +1,10 @@
 import datetime
+from dateutil.relativedelta import relativedelta
 
-from framework.interface_drivers.Logger import Logger
+from framework.interface_drivers.logger.Logger import Logger
 
 
-class DateTimeUtil :
-
+class DateTimeUtil:
 
     @staticmethod
     def shift_time(date, shift_value, shift_type):
@@ -38,58 +38,29 @@ class DateTimeUtil :
         variation_type = variation_type.lower()
         date_difference = abs(date_one - date_two)
 
-        seconds = date_difference.seconds % 60
-        minutes = (date_difference.seconds // 60) % 60
-        hours = (date_difference.seconds // (60*60)) % 24
-        days = date_difference.days % 30
-        months = date_difference.days // 30
-        years = date_difference.days // 365
-
         if variation_type == 'second':
-            return not years and\
-                   not months and\
-                   not days and\
-                   not hours and\
-                   not minutes and\
-                   seconds <= variation_value
+            variation = datetime.timedelta(seconds=variation_value)
         elif variation_type == 'minute':
-            return not years and\
-                   not months and\
-                   not days and\
-                   not hours and\
-                   (minutes < variation_value or (minutes == variation_value and
-                                                  not seconds))
+            variation = datetime.timedelta(seconds=variation_value * 60)
         elif variation_type == 'hour':
-            return not years and\
-                   not months and\
-                   not days and\
-                   (hours < variation_value or (hours == variation_value and
-                                                not minutes and
-                                                not seconds))
+            variation = datetime.timedelta(seconds=variation_value * 60 * 60)
         elif variation_type == 'day':
-            return not years and\
-                   not months and\
-                   (days < variation_value or (days == variation_value and
-                                               not hours and
-                                               not minutes and
-                                               not seconds))
+            variation = datetime.timedelta(days=variation_value)
         elif variation_type == 'month':
-            return not years and\
-                   (months < variation_value or (months == variation_value and
-                                                 not days and
-                                                 not hours and
-                                                 not minutes and
-                                                 not seconds))
+            if date_one < date_two:
+                date_one += relativedelta(months=variation_value)
+                return date_one >= date_two
+            else:
+                date_two += relativedelta(months=variation_value)
+                return date_two >= date_one
         elif variation_type == 'year':
-            return years < variation_value or (years == variation_value and
-                                               not months and
-                                               not days and
-                                               not hours and
-                                               not minutes and
-                                               not seconds)
+            leap = variation_value // 4 - 1
+            variation = datetime.timedelta(days=(variation_value * 365 + leap))
         else:
             Logger.add_log(message='Invalid format of variation type')
             return False
+
+        return date_difference <= variation
 
     @staticmethod
     def is_date_between(date, lower_boundary, upper_boundary):
