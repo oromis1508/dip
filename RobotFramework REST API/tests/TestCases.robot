@@ -1,6 +1,7 @@
 *** Settings ***
 Resource  ../resources/Keywords.robot
 
+
 *** Test Cases ***
 Test Stream Method
     ${response}=  Use Method Stream To Create Streams  ${number_of_streams}
@@ -18,4 +19,3 @@ Login Into The Service
     #user       #password      #status code
     user        passwd         ${ok_status_code}
     unvalid     unvalid        ${unauthorized_status_code}
-
