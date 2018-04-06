@@ -1,3 +1,6 @@
+from framework.interface_drivers.http import StatusCodes
+
+
 class MockRequestsUtil:
 
     @staticmethod
@@ -12,7 +15,7 @@ class MockRequestsUtil:
 
         headers = kwargs.get('headers', None)
         params = kwargs.get('params', None)
-        status_code = kwargs.get('status_code', 200)
+        status_code = kwargs.get('status_code', StatusCodes.ok_status_code)
         body = kwargs.get('body', None)
 
         return MockResponse(url=kwargs['url'],

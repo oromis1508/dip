@@ -1,11 +1,12 @@
 *** Settings ***
 Library  ../libraries/HttpBinMethods.py
+Variables  ../utils/interface_utils/http/HttpCodes.py
+
 *** Variables ***
 ${parameter_name}               arg
 ${parameter_value}              value
-${ok_status_code}               ${200}
-${unauthorized_status_code}     ${401}
 ${number_of_streams}            ${10}
+
 
 *** Keywords ***
 Login Into The Service
