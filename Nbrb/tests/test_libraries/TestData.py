@@ -1,5 +1,7 @@
 from framework.data_processors.ExcelReader import get_sheet_dict
-from test_data.variables import TestDataVariables
+from framework.interface_utils.database.DatabaseUtil import select_entries
+from framework.interface_utils.database.SqlRequests import select_random_entry
+from test_data.variables import TestDataVariables, DatabaseDataVariables
 
 
 def get_test_data_list(excel_sheet, sets_of_test_data, data_one_set):
@@ -14,3 +16,14 @@ def get_test_data_list(excel_sheet, sets_of_test_data, data_one_set):
                           sheet_name=excel_sheet,
                           values_sets=sets_of_test_data,
                           keys_num=data_one_set)
+
+
+def format_currency_id(test_data_cur_id):
+    if test_data_cur_id == '-':
+        return ''
+    elif test_data_cur_id == 'random':
+        random_entry = select_entries(select_random_entry(table_name=DatabaseDataVariables.dynamics_table_name,
+                                                          entries_number=1))
+        return random_entry['CUR_ID']
+
+    return test_data_cur_id

@@ -21,11 +21,13 @@ Check dynamic of currency service
 *** Keywords ***
 Check dynamic of currency response
     [Arguments]  ${cur_id}  ${expected_status_code}  ${start_date}  ${end_date}  ${scheme_name}
-    ${cur_db}=  Get Dynamic Currency From Database  ${cur_id}  ${start_date}  ${end_date}
-    ${cur_api_response}=  Get Dynamic Currency From Api  ${start_date}  ${end_date}
+    ${cur_id}  Format Currency Id  ${cur_id}
+    ${cur_api_response}=  Get Dynamic Currency From Api  ${cur_id}  ${start_date}  ${end_date}
 
     Soft Should Be Equal  ${expected_status_code}  ${cur_api_response.status_code}  Checking status code of the dynamics response (cur_id=${cur_id}, start_date=${start_date}, end_date=${end_date})
     Return From Keyword If  ${expected_status_code}==${bad_request_status_code}
+
+    ${cur_db}=  Get Dynamic Currency From Database  ${cur_id}  ${start_date}  ${end_date}
 
     ${is_valid}=  Validate Json Scheme  scheme_name=${scheme_name}  json_file=${cur_api_response.json()}
     Should Be True  ${is_valid}  Checking that response json scheme is correct

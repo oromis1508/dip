@@ -21,12 +21,15 @@ Check currency info service
 *** Keywords ***
 Check currency info response
     [Arguments]  ${cur_id}  ${expected_status_code}  ${scheme_name}
-    ${cur_db}=  Get Currency Info From Database  ${cur_id}
-    ${cur_api_response}=  Get Currency Info From Api Request
+    ${cur_id}  Format Currency Id  ${cur_id}
+    ${cur_api_response}=  Get Currency Info From Api Request  ${cur_id}
 
     Soft Should Be Equal  ${expected_status_code}  ${cur_api_response.status_code}  Checking api response status code (cur_id=${cur_id})
     Return From Keyword If  ${expected_status_code}==${bad_request_status_code}
 
+    ${cur_db}=  Get Currency Info From Database  ${cur_id}
+
     ${is_valid}=  Validate Json Scheme  scheme_name=${scheme_name}  json_file=${cur_api_response.json()}
     Should Be True  ${is_valid}  Checking is api response json scheme is valid
+
     Should Be Equal Ignore Difference None And Empty String  ${cur_db}  ${cur_api_response.json()}  Checking if currency info of api and database is equal

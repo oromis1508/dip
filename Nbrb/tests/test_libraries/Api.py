@@ -1,12 +1,13 @@
 from datetime import datetime
 
-from test_data.variables import DatabaseDataVariables, WebServiceMethods
+from test_data.variables import WebServiceMethods
 from framework.interface_utils.http.HttpUtil import get_request
 
 
-def get_dynamic_currency_from_api(start_date, end_date):
+def get_dynamic_currency_from_api(cur_id, start_date, end_date):
     """ Call method to sending request to api method for getting dynamic of currency
 
+    :param(str or int) cur_id: cur_id for dynamics request
     :param(str) start_date: parameter startDate for the request (format: 1990-01-31)
     :param(str) end_date: parameter endDate for the request (format: 1990-01-31)
     :return: the response object
@@ -19,17 +20,18 @@ def get_dynamic_currency_from_api(start_date, end_date):
         params['endDate'] = end_date
 
     return get_request(url='{dyn_url}/{cur_id}'.format(dyn_url=WebServiceMethods.get_dynamic,
-                                                       cur_id=DatabaseDataVariables.cur_id),
+                                                       cur_id=cur_id),
                        params=params)
 
 
-def get_currency_info_from_api_request():
+def get_currency_info_from_api_request(cur_id):
     """ Call method to sending request to api method for getting currency info
 
+    :param(str or int) cur_id: cur_id for currencies request
     :return: the response object
     """
     response = get_request('{cur_url}/{cur_id}'.format(cur_url=WebServiceMethods.get_currencies,
-                                                       cur_id=DatabaseDataVariables.cur_id))
+                                                       cur_id=cur_id))
     return response
 
 

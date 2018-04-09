@@ -12,4 +12,3 @@ column_types = {currencies_table_name: ['number(4)', 'number(4)', 'varchar2(5)',
                                         'varchar2(200)', 'varchar2(200)', 'varchar2(200)',
                                         'number(10)', 'number(1)', 'varchar2(20)', 'varchar2(20)'],
                 dynamics_table_name: ['number(4)', 'Date', 'number(10,5)']}
-cur_id = 0
