@@ -1,0 +1,161 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "Cur_ID": {
+      "$id": "/properties/Cur_ID",
+      "type": "integer",
+      "title": "The Cur_id Schema ",
+      "default": 0,
+      "examples": [
+        190
+      ]
+    },
+    "Cur_ParentID": {
+      "$id": "/properties/Cur_ParentID",
+      "type": "integer",
+      "title": "The Cur_parentid Schema ",
+      "default": 0,
+      "examples": [
+        190
+      ]
+    },
+    "Cur_Code": {
+      "$id": "/properties/Cur_Code",
+      "type": "string",
+      "title": "The Cur_code Schema ",
+      "default": "",
+      "examples": [
+        "643"
+      ]
+    },
+    "Cur_Abbreviation": {
+      "$id": "/properties/Cur_Abbreviation",
+      "type": "string",
+      "title": "The Cur_abbreviation Schema ",
+      "default": "",
+      "examples": [
+        "RUB"
+      ]
+    },
+    "Cur_Name": {
+      "$id": "/properties/Cur_Name",
+      "type": "string",
+      "title": "The Cur_name Schema ",
+      "default": "",
+      "examples": [
+        "Российский рубль"
+      ]
+    },
+    "Cur_Name_Bel": {
+      "$id": "/properties/Cur_Name_Bel",
+      "type": "string",
+      "title": "The Cur_name_bel Schema ",
+      "default": "",
+      "examples": [
+        "Расійскі рубель"
+      ]
+    },
+    "Cur_Name_Eng": {
+      "$id": "/properties/Cur_Name_Eng",
+      "type": "string",
+      "title": "The Cur_name_eng Schema ",
+      "default": "",
+      "examples": [
+        "Russian Ruble"
+      ]
+    },
+    "Cur_QuotName": {
+      "$id": "/properties/Cur_QuotName",
+      "type": "string",
+      "title": "The Cur_quotname Schema ",
+      "default": "",
+      "examples": [
+        "1 Российский рубль"
+      ]
+    },
+    "Cur_QuotName_Bel": {
+      "$id": "/properties/Cur_QuotName_Bel",
+      "type": "string",
+      "title": "The Cur_quotname_bel Schema ",
+      "default": "",
+      "examples": [
+        "1 Расійскі рубель"
+      ]
+    },
+    "Cur_QuotName_Eng": {
+      "$id": "/properties/Cur_QuotName_Eng",
+      "type": "string",
+      "title": "The Cur_quotname_eng Schema ",
+      "default": "",
+      "examples": [
+        "1 Russian Ruble"
+      ]
+    },
+    "Cur_NameMulti": {
+      "$id": "/properties/Cur_NameMulti",
+      "type": "string",
+      "title": "The Cur_namemulti Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "Cur_Name_BelMulti": {
+      "$id": "/properties/Cur_Name_BelMulti",
+      "type": "string",
+      "title": "The Cur_name_belmulti Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "Cur_Name_EngMulti": {
+      "$id": "/properties/Cur_Name_EngMulti",
+      "type": "string",
+      "title": "The Cur_name_engmulti Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "Cur_Scale": {
+      "$id": "/properties/Cur_Scale",
+      "type": "integer",
+      "title": "The Cur_scale Schema ",
+      "default": 0,
+      "examples": [
+        1
+      ]
+    },
+    "Cur_Periodicity": {
+      "$id": "/properties/Cur_Periodicity",
+      "type": "integer",
+      "title": "The Cur_periodicity Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "Cur_DateStart": {
+      "$id": "/properties/Cur_DateStart",
+      "type": "string",
+      "title": "The Cur_datestart Schema ",
+      "default": "",
+      "examples": [
+        "2003-01-01T00:00:00"
+      ]
+    },
+    "Cur_DateEnd": {
+      "$id": "/properties/Cur_DateEnd",
+      "type": "string",
+      "title": "The Cur_dateend Schema ",
+      "default": "",
+      "examples": [
+        "2016-06-30T00:00:00"
+      ]
+    }
+  }
+}
