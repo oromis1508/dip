@@ -1,7 +1,4 @@
 import json
-import os
-from sys import path
-
 from jsonschema import validate, ValidationError
 
 from framework.interface_utils.test_utils.Logger import Logger

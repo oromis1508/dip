@@ -2,6 +2,7 @@ import os
 
 __resources_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../resources')
 json_scheme_path = str(__resources_dir) + '/{}.json'
+empty_list_json_scheme = 'scheme_empty_list'
 
 test_data_path = str(__resources_dir) + '/test_data.xls'
 excel_sheet_currencies = 'Currency'

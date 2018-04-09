@@ -53,4 +53,3 @@ class DateTimeUtil:
             return date + datetime.timedelta(seconds=shift_value)
         else:
             return 'invalid parameter shift_type, need: year, month, day or second'
-

@@ -19,6 +19,11 @@ def get_test_data_list(excel_sheet, sets_of_test_data, data_one_set):
 
 
 def format_currency_id(test_data_cur_id):
+    """ Gets random cur_id if needed and transforms dash to empty string
+
+    :param test_data_cur_id: cur_id in excel file with test data
+    :return: transformed cur_id
+    """
     if test_data_cur_id == '-':
         return ''
     elif test_data_cur_id == 'random':

@@ -9,6 +9,7 @@ Variables  ../../test_data/variables/DatabaseDataVariables.py
 Variables  ../../test_data/variables/TestDataVariables.py
 Variables  ../../framework/interface_utils/http/HttpStatusCodes.py
 
+
 *** Test Cases ***
 Check dynamic of currency service
     Initialize Database Table  ${dynamics_table_name}
@@ -25,9 +26,9 @@ Check dynamic of currency response
     ${cur_api_response}=  Get Dynamic Currency From Api  ${cur_id}  ${start_date}  ${end_date}
 
     Soft Should Be Equal  ${expected_status_code}  ${cur_api_response.status_code}  Checking status code of the dynamics response (cur_id=${cur_id}, start_date=${start_date}, end_date=${end_date})
-    Return From Keyword If  ${expected_status_code}==${bad_request_status_code}
+    Return From Keyword If  ${expected_status_code}!=${ok_status_code}
 
-    ${cur_db}=  Get Dynamic Currency From Database  ${cur_id}  ${start_date}  ${end_date}
+    ${cur_db}=  Run Keyword And Return If  \'${scheme_name}\' != \'${empty_list_json_scheme}\'  Get Dynamic Currency From Database  ${cur_id}  ${start_date}  ${end_date}
 
     ${is_valid}=  Validate Json Scheme  scheme_name=${scheme_name}  json_file=${cur_api_response.json()}
     Should Be True  ${is_valid}  Checking that response json scheme is correct

@@ -25,7 +25,7 @@ Check currency info response
     ${cur_api_response}=  Get Currency Info From Api Request  ${cur_id}
 
     Soft Should Be Equal  ${expected_status_code}  ${cur_api_response.status_code}  Checking api response status code (cur_id=${cur_id})
-    Return From Keyword If  ${expected_status_code}==${bad_request_status_code}
+    Return From Keyword If  ${expected_status_code}!=${ok_status_code}
 
     ${cur_db}=  Get Currency Info From Database  ${cur_id}
 
