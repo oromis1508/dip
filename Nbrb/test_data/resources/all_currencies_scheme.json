@@ -1,0 +1,165 @@
+{
+  "$id": "http://www.nbrb.by/API/ExRates/Currencies",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "items": {
+    "$id": "http://www.nbrb.by/API/ExRates/Currencies/items",
+    "type": "object",
+    "properties": {
+      "Cur_ID": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_ID",
+        "type": "integer",
+        "title": "The Cur_id Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "Cur_ParentID": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_ParentID",
+        "type": "integer",
+        "title": "The Cur_parentid Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "Cur_Code": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Code",
+        "type": "string",
+        "title": "The Cur_code Schema ",
+        "default": "",
+        "examples": [
+          "008"
+        ]
+      },
+      "Cur_Abbreviation": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Abbreviation",
+        "type": "string",
+        "title": "The Cur_abbreviation Schema ",
+        "default": "",
+        "examples": [
+          "ALL"
+        ]
+      },
+      "Cur_Name": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Name",
+        "type": "string",
+        "title": "The Cur_name Schema ",
+        "default": "",
+        "examples": [
+          "Албанский лек"
+        ]
+      },
+      "Cur_Name_Bel": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Name_Bel",
+        "type": "string",
+        "title": "The Cur_name_bel Schema ",
+        "default": "",
+        "examples": [
+          "Албанскі лек"
+        ]
+      },
+      "Cur_Name_Eng": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Name_Eng",
+        "type": "string",
+        "title": "The Cur_name_eng Schema ",
+        "default": "",
+        "examples": [
+          "Albanian Lek"
+        ]
+      },
+      "Cur_QuotName": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_QuotName",
+        "type": "string",
+        "title": "The Cur_quotname Schema ",
+        "default": "",
+        "examples": [
+          "1 Албанский лек"
+        ]
+      },
+      "Cur_QuotName_Bel": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_QuotName_Bel",
+        "type": "string",
+        "title": "The Cur_quotname_bel Schema ",
+        "default": "",
+        "examples": [
+          "1 Албанскі лек"
+        ]
+      },
+      "Cur_QuotName_Eng": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_QuotName_Eng",
+        "type": "string",
+        "title": "The Cur_quotname_eng Schema ",
+        "default": "",
+        "examples": [
+          "1 Albanian Lek"
+        ]
+      },
+      "Cur_NameMulti": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_NameMulti",
+        "type": "string",
+        "title": "The Cur_namemulti Schema ",
+        "default": "",
+        "examples": [
+          ""
+        ]
+      },
+      "Cur_Name_BelMulti": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Name_BelMulti",
+        "type": "string",
+        "title": "The Cur_name_belmulti Schema ",
+        "default": "",
+        "examples": [
+          ""
+        ]
+      },
+      "Cur_Name_EngMulti": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Name_EngMulti",
+        "type": "string",
+        "title": "The Cur_name_engmulti Schema ",
+        "default": "",
+        "examples": [
+          ""
+        ]
+      },
+      "Cur_Scale": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Scale",
+        "type": "integer",
+        "title": "The Cur_scale Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "Cur_Periodicity": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_Periodicity",
+        "type": "integer",
+        "title": "The Cur_periodicity Schema ",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "Cur_DateStart": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_DateStart",
+        "type": "string",
+        "title": "The Cur_datestart Schema ",
+        "default": "",
+        "examples": [
+          "1991-01-01T00:00:00"
+        ]
+      },
+      "Cur_DateEnd": {
+        "$id": "http://www.nbrb.by/API/ExRates/Currencies/items/properties/Cur_DateEnd",
+        "type": "string",
+        "title": "The Cur_dateend Schema ",
+        "default": "",
+        "examples": [
+          "2007-11-30T00:00:00"
+        ]
+      }
+    }
+  }
+}
