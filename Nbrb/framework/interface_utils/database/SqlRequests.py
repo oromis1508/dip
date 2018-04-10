@@ -56,5 +56,5 @@ def select_random_entry(table_name, entries_number):
     :param(str) table_name: name of the database table where searched entry
     :return: the query string
     """
-    return select_request(table_name='{table_name} SAMPLE(10)'.format(table_name=table_name),
+    return select_request(table_name='(select * from {table_name} order by dbms_random.value)'.format(table_name=table_name),
                           condition='ROWNUM = {entries_number}'.format(entries_number=entries_number))
