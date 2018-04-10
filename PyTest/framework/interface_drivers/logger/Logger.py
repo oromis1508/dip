@@ -4,7 +4,7 @@ import logging
 class Logger:
 
     @staticmethod
-    def add_log(log_file_name='out', class_name='root', log_level=3, log_type='info', message=''):
+    def add_log(message='', log_file_name='out', class_name='root', log_level=3, log_type='info'):
         log_format = '%(levelname)s - %(message)s'
         if log_level >= 2:
             log_format = '%(name)s - {log_format}'.format(log_format=log_format)
