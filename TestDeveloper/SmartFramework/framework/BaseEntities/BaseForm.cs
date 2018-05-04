@@ -1,4 +1,5 @@
-﻿using smart.framework.Elements;
+﻿using System.Drawing;
+using smart.framework.Elements;
 using OpenQA.Selenium;
 
 namespace smart.framework.BaseEntities
@@ -20,10 +21,6 @@ namespace smart.framework.BaseEntities
             Log.Info($"Form '{_name}' has appeared");
         }
 
-        public void CheckTextOnForm(string text)
-        {
-            BaseElement.WaitForElementPresent(By.XPath("//*[contains(.,'" + text + "')]"), text);
-            Log.Info($"Text '{text}' is shown on the page");
-        }
+        public Point GetFormLocation => BaseElement.GetElementLocation(_locator);
     }
 }

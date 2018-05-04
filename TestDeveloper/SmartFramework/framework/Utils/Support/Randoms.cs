@@ -20,5 +20,18 @@ namespace smart.framework.Utils.Support
             }
             return resultString;
         }
+
+        public static object GetEnumRandomValue(Type type)
+        {
+            var values = Enum.GetValues(type);
+            return values.GetValue(Random.Next(values.Length));
+        }
+
+        public static string GetRandomDate(string dateFormat)
+        {
+            var start = new DateTime(1995, 1, 1);
+            var range = (DateTime.Today - start).Seconds;
+            return start.AddSeconds(Random.Next(range)).ToString(dateFormat);
+        }
     }
 }

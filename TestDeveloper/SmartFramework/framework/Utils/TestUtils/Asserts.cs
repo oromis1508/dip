@@ -60,22 +60,6 @@ namespace smart.framework.Utils.TestUtils
             }
         }
 
-        public static void IsFalse(bool expression, string message, bool isSoftAssert = false)
-        {
-            try
-            {
-                Assert.IsFalse(expression, message);
-                Log.Info($"== {message} == SUCCESSFULLY ==");
-            }
-            catch (AssertFailedException)
-            {
-                _isSoftAssertCaused = true;
-                Log.Fatal($"== {message} == UNSUCCESSFULLY ==");
-                if (!isSoftAssert)
-                    throw new AssertFailedException(message);
-            }
-        }
-
         public static void IsListContains<T>(List<T> source, List<T> values, string message, bool isSoftAssert = false)
         {
             foreach (var value in values)

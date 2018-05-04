@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
 using smart.framework.BaseEntities;
 
 namespace smart.framework.Utils.Support
 {
-    internal class BitmapUtil : BaseEntity
+    public class BitmapUtil : BaseEntity
     {
         public static bool ArePixelsEqual(Bitmap expected, Bitmap actual, string message, int desiredProcentSamePixels = 90)
         {
@@ -46,24 +44,6 @@ namespace smart.framework.Utils.Support
             }
 
             return true;
-        }
-
-        public static Bitmap TakeScreen()
-        {
-            ;
-            var bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            var graphics = Graphics.FromImage(bitmap);
-            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
-            return bitmap;
-        }
-
-        public static byte[] GetBytesFromImage(Bitmap image)
-        {
-            using (var stream = new MemoryStream())
-            {
-                image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                return stream.ToArray();
-            }
         }
     }
 }

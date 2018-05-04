@@ -1,4 +1,4 @@
-﻿namespace smart.framework.Utils.TestPortal
+﻿namespace smart.framework.Utils.Html
 {
     public enum RequestType
     {

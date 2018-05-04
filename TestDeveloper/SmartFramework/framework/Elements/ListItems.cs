@@ -16,5 +16,7 @@ namespace smart.framework.Elements
 
         public string GetSubItemAttribute(string subItemName, string attributeName) =>
             GetSubItem(subItemName).GetAttribute(attributeName);
+
+        public string GetSubItemText(By subItemLocator) => GetElement().FindElement(subItemLocator).Text;
     }
 }

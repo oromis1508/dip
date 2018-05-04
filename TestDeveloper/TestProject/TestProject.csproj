@@ -89,14 +89,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\test.cs" />
+    <Compile Include="Enums\PortalStatus.cs" />
+    <Compile Include="Models\AddedTest.cs" />
+    <Compile Include="Models\test.cs" />
     <Compile Include="Enums\TableHeaders.cs" />
     <Compile Include="Forms\Footer.cs" />
     <Compile Include="Forms\Header.cs" />
     <Compile Include="Pages\AddProjectPage.cs" />
+    <Compile Include="Forms\AddTestModalWindow.cs" />
     <Compile Include="Pages\ProjectPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Pages\TestPage.cs" />
+    <Compile Include="Tests\PortalFunctionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,6 @@
 ﻿using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Text;
-using Newtonsoft.Json;
-using smart.framework.BaseEntities;
+using smart.framework.Utils.Html;
 
 namespace smart.framework.Utils.TestPortal
 {
@@ -33,29 +29,7 @@ namespace smart.framework.Utils.TestPortal
             }
             var data = Encoding.ASCII.GetBytes(postData);
 
-            var request = (HttpWebRequest) WebRequest.Create(requestString);
-            request.Method = requestType.ToString();
-            request.ContentType = contentType;
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            var response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                return response.GetResponseStream();
-/*
-                var streamReader = new StreamReader(responseStream);
-                return streamReader.ReadToEnd();
-*/
-            }
-
-            BaseEntity.Log.Fatal("Error of getting the response");
-            return null;       
+            return Requests.PostRequest(requestString, contentType, data).GetResponseStream(); ;
         }
     }
 }

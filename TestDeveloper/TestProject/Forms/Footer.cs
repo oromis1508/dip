@@ -7,7 +7,7 @@ namespace TestProject.Forms
 {
     public class Footer : BaseForm
     {
-        private Label lblVariant = new Label(By.XPath("//footer//span"), "text with the number of variant");
+        private readonly Label _lblVariant = new Label(By.XPath("//footer//span"), "text with the number of variant");
 
         public Footer() : base(By.TagName("footer"), "page's footer")
         {
@@ -15,7 +15,7 @@ namespace TestProject.Forms
 
         public string GetVariantNumber()
         {
-            var variantText = lblVariant.Text;
+            var variantText = _lblVariant.Text;
             return Regex.Match(variantText, ".*Version: (\\d)\\D*").Groups[1].Value;
         }
     }

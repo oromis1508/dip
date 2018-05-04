@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using smart.framework.BaseEntities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using smart.framework.Utils.TestUtils;
 
@@ -22,7 +24,9 @@ namespace smart.framework.Elements
         {   
             WaitForElementPresent();
             return (RemoteWebElement)Browser.Instance.FindElement(Locator); ;
-        }   
+        }
+
+        public static Point GetElementLocation(By locator) => Browser.Instance.FindElement(locator).Location;
 
         public void Click()
         {
@@ -57,10 +61,12 @@ namespace smart.framework.Elements
             var wait = new WebDriverWait(Browser.Instance, TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.Timeout)));
             try
             {
+                wait.Until(waiting => Browser.Instance.ExecuteJavaScript<bool>("return document.readyState == \"complete\" && $.active == 0"));
+
                 wait.Until(waiting =>
                 {
                     var webElements = Browser.Instance.FindElements(Locator);
-                    return webElements.Count != 0;
+                    return webElements.Count != 0 && webElements[0].Displayed && webElements[0].Enabled;
                 });
             }
             catch (TimeoutException)
@@ -74,6 +80,8 @@ namespace smart.framework.Elements
             var wait = new WebDriverWait(Browser.Instance, TimeSpan.FromMilliseconds(Convert.ToDouble(Configuration.Timeout)));
             try
             {
+                wait.Until(waiting => Browser.Instance.ExecuteJavaScript<bool>("return document.readyState == \"complete\" && $.active == 0"));
+
                 wait.Until(waiting =>
                 {
                     try

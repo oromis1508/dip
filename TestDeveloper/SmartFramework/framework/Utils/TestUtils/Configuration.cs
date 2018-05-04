@@ -19,11 +19,24 @@ namespace smart.framework.Utils.TestUtils {
 
         public static string PortalPassword => GetParameterValue("PortalPassword");
 
-        public static string LocalBrowser => GetParameterValue("LocalBrowser");
+        public static string LocalBrowser => GetParameterValue("Browser");
 
         public static string OpenedProject => GetParameterValue("OpenedProject");
-        
-        public static string Browser => Environment.GetEnvironmentVariable("BrowserName");
-        public static bool IsRemote => false;
+
+        public static string PathTestAttachment => GetParameterValue("PathTestAttachment");
+
+        public static string TestRailUrl => GetParameterValue("TestRailUrl");
+
+        public static string TestRailLogin => GetParameterValue("TestRailLogin");
+
+        public static string TestRailPassword => GetParameterValue("TestRailPassword");
+
+        public static string TestRailProjectId => GetParameterValue("TestRailProjectId");
+
+        public static string TestRailCaseId => GetParameterValue("TestRailCaseId");
+
+        public static string RemoteBrowser => Environment.GetEnvironmentVariable("BrowserName");
+
+        public static bool IsRemote => Environment.GetEnvironmentVariable("IsRemote") != null && bool.Parse(Environment.GetEnvironmentVariable("IsRemote"));
     }
 }
