@@ -51,6 +51,7 @@
     <Compile Include="framework\Utils\Support\ListUtil.cs" />
     <Compile Include="framework\Utils\Support\XmlUtil.cs" />
     <Compile Include="framework\Utils\Html\RequestType.cs" />
+    <Compile Include="framework\Utils\SystemUtils\FileUtil.cs" />
     <Compile Include="framework\Utils\TestPortal\PortalApiUtil.cs" />
     <Compile Include="framework\Utils\TestPortal\PortalMethod.cs" />
     <Compile Include="framework\Utils\TestUtils\Asserts.cs" />
