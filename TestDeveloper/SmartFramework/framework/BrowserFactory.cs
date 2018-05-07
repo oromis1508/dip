@@ -20,7 +20,7 @@ namespace smart.framework
                 var map = new Dictionary<string, object> { { CapabilityType.BrowserName, browserName.ToLower() } };
                 if (browserName == "Firefox")
                 {
-                    map.Add("marionette", false);
+                    map.Add("marionette", true);
                 }
                 return new RemoteWebDriver(new DesiredCapabilities(map));
             }
@@ -30,7 +30,9 @@ namespace smart.framework
                 case "Chrome":
                     return new ChromeDriver();
                 case "Firefox":
-                   return new FirefoxDriver(FirefoxDriverService.CreateDefaultService(), new FirefoxOptions(), TimeSpan.FromMinutes(3));
+                    var firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.headless();
+                    return new FirefoxDriver(FirefoxDriverService.CreateDefaultService(), new FirefoxOptions(), TimeSpan.FromMinutes(3));
                 default:
                     Log.Info($"Invalid name of browser: {browserName}, choosed default browser Chrome");
                     return new ChromeDriver();
