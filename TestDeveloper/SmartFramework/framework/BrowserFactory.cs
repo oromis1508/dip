@@ -18,6 +18,10 @@ namespace smart.framework
             if (Configuration.IsRemote)
             {
                 var map = new Dictionary<string, object> { { CapabilityType.BrowserName, browserName.ToLower() } };
+                if (browserName == "Firefox")
+                {
+                    map.Add("marionette", false);
+                }
                 return new RemoteWebDriver(new DesiredCapabilities(map));
             }
 
