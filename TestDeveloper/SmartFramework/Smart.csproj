@@ -133,9 +133,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\Selenium.Firefox.WebDriver.0.20.0\driver\geckodriver.exe">
+    <EmbeddedResource Include="..\packages\Selenium.Firefox.WebDriver.0.20.0\driver\geckodriver.exe">
       <Link>geckodriver.exe</Link>
-    </Content>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
