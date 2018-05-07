@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smart.framework;
 using smart.framework.BaseEntities;
 using smart.framework.Utils.Support;
+using smart.framework.Utils.SystemUtils;
 using smart.framework.Utils.TestPortal;
 using smart.framework.Utils.TestUtils;
 using TestProject.Forms;
@@ -40,7 +41,7 @@ namespace TestProject.Tests
         [Priority(1)]
         public void DeleteFile()
         {
-            File.Delete(_pathTestAttachment);
+            FileUtil.DeleteFileWithWait(_pathTestAttachment);
         }
 
         [TestMethod]
