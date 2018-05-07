@@ -18,7 +18,7 @@ namespace smart.framework
 
             if (Configuration.IsRemote)
             {
-                var map = new Dictionary<string, object> { { CapabilityType.BrowserName, browserName } };
+                var map = new Dictionary<string, object> { { CapabilityType.BrowserName, browserName.ToLower() } };
                 return new RemoteWebDriver(new DesiredCapabilities(map));
             }
 
@@ -27,7 +27,7 @@ namespace smart.framework
                 case "Chrome":
                     return new ChromeDriver();
                 case "Firefox":
-                   return new FirefoxDriver(FirefoxDriverService.CreateDefaultService(), new FirefoxOptions(), TimeSpan.FromMinutes(10));
+                   return new FirefoxDriver();
                 default:
                     Log.Info($"Invalid name of browser: {browserName}, choosed default browser Chrome");
                     return new ChromeDriver();
