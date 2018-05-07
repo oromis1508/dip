@@ -30,8 +30,6 @@ namespace smart.framework
                 case "Chrome":
                     return new ChromeDriver();
                 case "Firefox":
-                    var firefoxOptions = new FirefoxOptions();
-                    firefoxOptions.headless();
                     return new FirefoxDriver(FirefoxDriverService.CreateDefaultService(), new FirefoxOptions(), TimeSpan.FromMinutes(3));
                 default:
                     Log.Info($"Invalid name of browser: {browserName}, choosed default browser Chrome");
