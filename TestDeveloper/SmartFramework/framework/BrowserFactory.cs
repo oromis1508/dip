@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -25,7 +26,7 @@ namespace smart.framework
                 case "Chrome":
                     return new ChromeDriver();
                 case "Firefox":
-                   return new FirefoxDriver();
+                   return new FirefoxDriver(FirefoxDriverService.CreateDefaultService(), new FirefoxOptions(), TimeSpan.FromMinutes(3));
                 default:
                     Log.Info($"Invalid name of browser: {browserName}, choosed default browser Chrome");
                     return new ChromeDriver();

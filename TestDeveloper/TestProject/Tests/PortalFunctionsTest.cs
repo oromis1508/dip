@@ -41,7 +41,10 @@ namespace TestProject.Tests
         [Priority(1)]
         public void DeleteFile()
         {
-            FileUtil.DeleteFileWithWait(_pathTestAttachment);
+            if (_pathTestAttachment != null)
+            {
+                FileUtil.DeleteFileWithWait(_pathTestAttachment);
+            }
         }
 
         [TestMethod]
