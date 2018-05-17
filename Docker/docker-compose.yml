@@ -1,0 +1,18 @@
+version: '2'
+services:
+  tomcat:
+    ports:
+      - "8081:8081"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        username: a.chernik
+        password: +$$I).J'VDu27
+  rabbit:
+    ports:
+      - "8080:15672"
+      - "8081:5672"
+    build:
+      context: .
+      dockerfile: Dockerfile-rabbit

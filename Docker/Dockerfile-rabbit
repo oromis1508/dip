@@ -1,0 +1,14 @@
+FROM rabbitmq:3-management
+
+# Define environment variables.
+ENV RABBITMQ_USER usr
+ENV RABBITMQ_PASSWORD pwd
+
+CMD rabbitmqctl add_user $RABBITMQ_USER $RABBITMQ_PASSWORD
+CMD rabbitmqctl set_user_tags $RABBITMQ_USER administrator
+CMD rabbitmqctl set_permissions -p / $RABBITMQ_USER  ".*" ".*" ".*"
+
+CMD rabbitmq-server start
+
+#CMD docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_USER=usr -e RABBITMQ_DEFAULT_PASS=pwd -p 8080:15672 -p 8081:5672 rabbitmq:3-management 
+
