@@ -1,4 +1,4 @@
-FROM tomcat:8.5-jre8
+FROM tomcat:8.0-jre8
 
 #Args for git auth
 ARG username
@@ -17,6 +17,10 @@ RUN git config --global user.email $username@a1qa.com
 #Git clone from CVS
 RUN git clone https://$username:$password@qa-gitlab.demohoster.com/automation/docker-test-task.git
 
+#Change maven dependencies
+RUN sed -i -e 's/4.3.4.RELEASE/5.0.6.RELEASE/g' docker-test-task/pom.xml
+RUN sed -i -e 's@<dependencies>@<dependencies><dependency><groupId>org.springframework.amqp</groupId><artifactId>spring-rabbit</artifactId><version>2.0.3.RELEASE</version></dependency>@g' docker-test-task/pom.xml
+
 #Deploy war
 RUN cd docker-test-task && mvn clean package
 
@@ -24,10 +28,13 @@ RUN cd docker-test-task && mvn clean package
 RUN sed -i -e 's/8080/8081/g' conf/server.xml
 
 #Move war file to tomcat folder
-RUN mv docker-test-task/target/docker-task-1.0.war webapps/
+RUN mv docker-test-task/target/docker-task-1.0.war /usr/local/tomcat/webapps/
+
+#Rename war file to ROOT
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+RUN mv /usr/local/tomcat/webapps/docker-task-1.0.war /usr/local/tomcat/webapps/ROOT.war 
 
 #Start tomcat
 #CMD service tomcat start
 WORKDIR bin
 CMD ["catalina.sh", "run"]
-
